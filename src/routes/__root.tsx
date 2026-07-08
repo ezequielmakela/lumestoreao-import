@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Lume Store — Removedor de Fiapos" },
+      { name: "description", content: "Removedor de Fiapos Lume — deixa as tuas roupas como novas em segundos. Entrega em Angola." },
+      { name: "author", content: "Lume Store" },
+      { property: "og:title", content: "Lume Store — Removedor de Fiapos" },
+      { property: "og:description", content: "Removedor de Fiapos Lume — deixa as tuas roupas como novas em segundos. Entrega em Angola." },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Lume Store" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
