@@ -1,24 +1,68 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { UrgencyBar } from "@/components/landing/UrgencyBar";
+import { SocialProof } from "@/components/landing/SocialProof";
+import { PainSection } from "@/components/landing/PainSection";
+import { ProductSection } from "@/components/landing/ProductSection";
+import { SocialWall } from "@/components/landing/SocialWall";
+import { FAQ } from "@/components/landing/FAQ";
+import { Footer } from "@/components/landing/Footer";
+import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
+import { StickyBuyBar } from "@/components/landing/StickyBuyBar";
+import { goToCheckout } from "@/lib/checkout";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Lume Store — Removedor de Fiapos" },
+      {
+        name: "description",
+        content:
+          "Removedor de Fiapos Lume — remove fiapos, pelos e bolinhas em segundos. Entrega em Angola. Peça o seu hoje.",
+      },
+      { property: "og:title", content: "Lume Store — Removedor de Fiapos" },
+      {
+        property: "og:description",
+        content:
+          "Removedor de Fiapos Lume — remove fiapos, pelos e bolinhas em segundos. Entrega em Angola.",
+      },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: LandingPage,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function LandingPage() {
+  useEffect(() => {
+    const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+    fbq?.("track", "ViewContent", {
+      content_name: "Removedor de Fiapos Lume",
+      content_category: "Removedor de Fiapos",
+      content_ids: ["lume-removedor"],
+      content_type: "product",
+      value: 10999,
+      currency: "AOA",
+    });
+  }, []);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Navbar onBuyClick={goToCheckout} />
+      <main>
+        <Hero onBuyClick={goToCheckout} />
+        <UrgencyBar />
+        <SocialProof />
+        <PainSection />
+        <ProductSection onBuyClick={goToCheckout} />
+        <SocialWall />
+        <FAQ />
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <StickyBuyBar onBuyClick={goToCheckout} />
     </div>
   );
 }
