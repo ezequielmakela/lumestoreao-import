@@ -4,7 +4,8 @@ export const CHECKOUT_URL =
 
 export const goToCheckout = () => {
   try {
-    window.fbq?.("track", "InitiateCheckout", {
+    const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+    fbq?.("track", "InitiateCheckout", {
       content_ids: ["lume-removedor"],
       num_items: 1,
       value: 10999,
