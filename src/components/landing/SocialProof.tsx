@@ -1,7 +1,7 @@
 import { Users, Truck, ShieldCheck, AArrowDown } from "lucide-react";
 
 const items = [
-  { icon: Users, label: "+50 clientes satisfeitos" },
+  { icon: Users, label: "+30 clientes satisfeitos" },
   { icon: Truck, label: "Entrega em Grátis" },
   { icon: ShieldCheck, label: "Garantia 7 dias" },
   { icon: AArrowDown, label: "​" },

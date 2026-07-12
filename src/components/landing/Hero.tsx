@@ -17,7 +17,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
             <h1 className="fade-up mt-5 font-display font-extrabold text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-balance min-h-[2.1em]" style={{ animationDelay: "0.1s" }}>
               <Typewriter
                 segments={[
-                  { text: "Suas roupas como " },
+                  { text: "Tuas roupas como " },
                   { text: "novas", className: "text-primary" },
                   { text: " em segundos!" },
                 ]}
@@ -35,7 +35,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
               <span className="font-display font-bold text-xl text-primary">Kz</span>
             </div>
             <p className="fade-up mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-destructive" style={{ animationDelay: "0.3s" }}>
-              <Clock className="h-4 w-4" /> Oferta válida hoje · Últimas unidades
+              <Clock className="h-4 w-4" /> &nbsp;Últimas unidades
             </p>
 
             <div className="fade-up mt-6 flex flex-col sm:flex-row gap-3 sm:items-center justify-center lg:justify-start" style={{ animationDelay: "0.35s" }}>
@@ -50,7 +50,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
 
             {/* Mini trust row */}
             <ul className="fade-up mt-8 flex flex-wrap gap-x-5 gap-y-2 justify-center lg:justify-start text-xs md:text-sm text-muted-foreground" style={{ animationDelay: "0.4s" }}>
-              <li className="inline-flex items-center gap-1.5"><Users className="h-4 w-4 text-primary" /> +50 clientes</li>
+              <li className="inline-flex items-center gap-1.5"><Users className="h-4 w-4 text-primary" /> +30 clientes</li>
               <li className="inline-flex items-center gap-1.5"><Truck className="h-4 w-4 text-primary" /> Entrega grátis</li>
               <li className="inline-flex items-center gap-1.5"><ShieldCheck className="h-4 w-4 text-primary" /> Garantia 7 dias</li>
             </ul>
