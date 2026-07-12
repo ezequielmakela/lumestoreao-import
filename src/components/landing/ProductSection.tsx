@@ -57,7 +57,7 @@ export const ProductSection = ({ onBuyClick }: { onBuyClick?: () => void }) => {
             <span className="text-lg line-through text-[#b80000] leading-none">15.000 kz</span>
           </div>
           <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-destructive">
-            ⚡ Restam poucas unidades · Oferta válida hoje
+            Restam poucas unidades
           </p>
           <p className="mt-1 text-sm text-muted-foreground">Pagamento na entrega · Entrega grátis em Luanda</p>
 

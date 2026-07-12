@@ -12,7 +12,7 @@ export const PainSection = () => (
           Tuas roupas estão assim?
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
-          Fiapos e bolinhas fazem tuas peças favoritas parecerem velhas — mesmo quando ainda estão em ótimo estado.
+          Fiapos e bolinhas fazem tuas peças favoritas parecerem velhas, mesmo quando ainda estão em ótimo estado.
         </p>
       </Reveal>
 
