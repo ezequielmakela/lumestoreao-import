@@ -10,16 +10,14 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Left: copy + price + CTA */}
           <div className="text-center lg:text-left">
-            <span className="fade-up inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase">
-              Entrega Grátis em Luanda
+            <span className="fade-up inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase invisible">
+              &nbsp;
             </span>
 
             <h1 className="fade-up mt-5 font-display font-extrabold text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-balance min-h-[2.1em]" style={{ animationDelay: "0.1s" }}>
               <Typewriter
                 segments={[
-                  { text: "Tuas roupas como " },
-                  { text: "novas", className: "text-primary" },
-                  { text: " em segundos!" },
+                  { text: "Nunca mais deite roupas por causa dos fiapos." },
                 ]}
               />
             </h1>
@@ -44,7 +42,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
                 size="lg"
                 className="pulse-glow bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold text-base md:text-lg h-14 px-10 shadow-elegant sm:min-w-[240px]"
               >
-                Comprar Agora
+                Pague apenas na entrega.
               </Button>
             </div>
 
