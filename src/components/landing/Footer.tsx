@@ -14,7 +14,7 @@ export const Footer = () => (
       <div>
         <h4 className="font-display font-bold uppercase text-sm tracking-wider text-background/80">Fale Conosco</h4>
         <ul className="mt-4 space-y-3 text-background/80">
-          <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> WhatsApp: +244 952 3556</li>
+          <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> WhatsApp: +244 952 355 696</li>
           <li><a href="https://www.instagram.com/lumestore.ao/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--primary-glow))]"><Instagram className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> @lumestore.ao</a></li>
           <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> Luanda, Angola</li>
         </ul>
