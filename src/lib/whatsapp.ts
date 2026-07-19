@@ -1,5 +1,5 @@
 // Centralized WhatsApp config. Trocar o número aqui chega para atualizar todo o site.
-export const WHATSAPP_NUMBER = "2449523556"; // formato internacional sem +
+export const WHATSAPP_NUMBER = "244952355696"; // formato internacional sem +
 
 export const UNIT_PRICE = 10999;
 
