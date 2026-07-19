@@ -55,9 +55,7 @@ function LandingPage() {
         <CustomerPhotos />
         <UrgencyBar />
         <SocialProof />
-        <PainSection />
         <ProductSection onBuyClick={goToCheckout} />
-        <SocialWall />
         <FAQ />
       </main>
       <Footer />
