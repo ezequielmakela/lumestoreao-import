@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, ShieldCheck, Truck, RotateCcw, Lock, AArrowDown } from "lucide-react";
+import { Check, ShieldCheck, Truck, RotateCcw, Lock, Wallet } from "lucide-react";
 import productImg from "@/assets/product.jpg";
 import afterAsset from "@/assets/depois.jpg.asset.json";
 const afterImg = afterAsset.url;
@@ -37,15 +37,7 @@ export const ProductSection = ({ onBuyClick }: { onBuyClick?: () => void }) => {
 
         {/* Info */}
         <Reveal delay={120}>
-          <div className="flex items-center gap-2">
-            <div className="flex">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <AArrowDown key={i} className="h-4 w-4 fill-primary text-primary" />
-              ))}
-            </div>
-            <span className="text-sm text-muted-foreground">​</span>
-          </div>
-          <h2 className="mt-4 font-display font-extrabold text-3xl md:text-5xl leading-tight">
+          <h2 className="font-display font-extrabold text-3xl md:text-5xl leading-tight">
             Removedor de Fiapos Lume
           </h2>
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
@@ -57,10 +49,20 @@ export const ProductSection = ({ onBuyClick }: { onBuyClick?: () => void }) => {
             <span className="font-display font-bold text-xl text-primary leading-none">kz</span>
             <span className="text-lg line-through text-[#b80000] leading-none">15.000 kz</span>
           </div>
-          <p className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-destructive">
+
+          <div className="mt-4 flex flex-wrap gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
+              <Truck className="h-4 w-4" /> Entrega grátis hoje em Luanda
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
+              <Wallet className="h-4 w-4" /> Recebe em casa e paga na entrega
+            </span>
+          </div>
+
+          <p className="mt-3 text-sm font-semibold text-destructive">
             Restam poucas unidades
           </p>
-          <p className="mt-1 text-sm text-muted-foreground">Pagamento na entrega · Entrega grátis em Luanda</p>
+
 
           <ul className="mt-6 space-y-3">
             {["Bateria recarregável de longa duração", "Ideal para qualquer tecido", "Recipiente removível para fácil limpeza"].map((t) => (

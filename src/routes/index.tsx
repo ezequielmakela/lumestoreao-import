@@ -4,10 +4,8 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { UrgencyBar } from "@/components/landing/UrgencyBar";
 import { SocialProof } from "@/components/landing/SocialProof";
-import { PainSection } from "@/components/landing/PainSection";
 import { CustomerPhotos } from "@/components/landing/CustomerPhotos";
 import { ProductSection } from "@/components/landing/ProductSection";
-import { SocialWall } from "@/components/landing/SocialWall";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
 import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
@@ -57,9 +55,7 @@ function LandingPage() {
         <CustomerPhotos />
         <UrgencyBar />
         <SocialProof />
-        <PainSection />
         <ProductSection onBuyClick={goToCheckout} />
-        <SocialWall />
         <FAQ />
       </main>
       <Footer />
