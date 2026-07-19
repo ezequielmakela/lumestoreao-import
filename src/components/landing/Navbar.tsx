@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/logo.svg";
 
 const links = [
   { label: "Produto", href: "#produto" },
-  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Clientes", href: "#clientes" },
 ];
 
 export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { theme, toggle, mounted } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -35,11 +37,7 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
         <ul className="hidden md:flex items-center gap-6">
           {links.map((l) => (
             <li key={l.href}>
-              <a
-                href={l.href}
-                className="text-sm transition-colors font-bold text-primary"
-
-              >
+              <a href={l.href} className="text-sm font-bold text-primary hover:opacity-80 transition-opacity">
                 {l.label}
               </a>
             </li>
@@ -47,6 +45,14 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
         </ul>
 
         <div className="flex items-center gap-2 md:gap-3">
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
+            className="h-10 w-10 grid place-items-center rounded-full text-foreground hover:bg-muted transition-colors"
+          >
+            {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+          </button>
           <Button
             onClick={onBuyClick}
             className="hidden sm:inline-flex rounded-xl bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold shadow-elegant"
