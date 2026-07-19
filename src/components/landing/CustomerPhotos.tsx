@@ -1,4 +1,11 @@
 import { Reveal } from "./Reveal";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import c1 from "@/assets/cliente-1.jpg.asset.json";
 import c2 from "@/assets/cliente-2.jpg.asset.json";
 import c3 from "@/assets/cliente-3.jpg.asset.json";
@@ -24,20 +31,35 @@ export const CustomerPhotos = () => (
         </p>
       </Reveal>
 
-      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {photos.map((p, i) => (
-          <Reveal key={p.asset_id} delay={i * 60}>
-            <div className="rounded-2xl overflow-hidden shadow-elegant bg-background">
-              <img
-                src={p.url}
-                alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"
-                loading="lazy"
-                className="w-full aspect-[3/4] object-cover"
-              />
-            </div>
-          </Reveal>
-        ))}
-      </div>
+      <Reveal delay={120} className="mt-10">
+        <Carousel
+          opts={{ align: "start", loop: true, dragFree: true }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {photos.map((p) => (
+              <CarouselItem
+                key={p.asset_id}
+                className="pl-4 basis-[75%] sm:basis-1/2 md:basis-1/3"
+              >
+                <div className="rounded-2xl overflow-hidden shadow-elegant bg-background">
+                  <img
+                    src={p.url}
+                    alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"
+                    loading="lazy"
+                    className="w-full aspect-[3/4] object-cover"
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="hidden md:flex -left-4" />
+          <CarouselNext className="hidden md:flex -right-4" />
+        </Carousel>
+        <p className="mt-4 text-center text-xs text-muted-foreground md:hidden">
+          Arrasta para ver mais
+        </p>
+      </Reveal>
     </div>
   </section>
 );
