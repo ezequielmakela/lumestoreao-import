@@ -5,6 +5,7 @@ import { Hero } from "@/components/landing/Hero";
 import { UrgencyBar } from "@/components/landing/UrgencyBar";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { PainSection } from "@/components/landing/PainSection";
+import { CustomerPhotos } from "@/components/landing/CustomerPhotos";
 import { ProductSection } from "@/components/landing/ProductSection";
 import { SocialWall } from "@/components/landing/SocialWall";
 import { FAQ } from "@/components/landing/FAQ";
@@ -53,6 +54,7 @@ function LandingPage() {
       <Navbar onBuyClick={goToCheckout} />
       <main>
         <Hero onBuyClick={goToCheckout} />
+        <CustomerPhotos />
         <UrgencyBar />
         <SocialProof />
         <PainSection />

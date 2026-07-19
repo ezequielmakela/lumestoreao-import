@@ -1,7 +1,10 @@
 import { ArrowDown, Sparkles } from "lucide-react";
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
+import beforeAsset from "@/assets/antes.jpg.asset.json";
+import afterAsset from "@/assets/depois.jpg.asset.json";
 import { Reveal } from "./Reveal";
+
+const beforeImg = beforeAsset.url;
+const afterImg = afterAsset.url;
 
 export const PainSection = () => (
   <section id="como-funciona" className="py-16 md:py-24 bg-background">

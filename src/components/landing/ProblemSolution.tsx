@@ -1,6 +1,8 @@
 import { Check, X } from "lucide-react";
-import beforeImg from "@/assets/before.jpg";
-import afterImg from "@/assets/after.jpg";
+import beforeAsset from "@/assets/antes.jpg.asset.json";
+import afterAsset from "@/assets/depois.jpg.asset.json";
+const beforeImg = beforeAsset.url;
+const afterImg = afterAsset.url;
 import { Reveal } from "./Reveal";
 
 export const ProblemSolution = () => {
