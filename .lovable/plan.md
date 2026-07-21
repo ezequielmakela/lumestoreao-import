@@ -1,42 +1,29 @@
-# Corrigir imagens em lumestore.store (host externo via GitHub)
+## Objetivo
 
-## Causa
+Adicionar a nova foto de entrega, tirar o "efeito bolinha" atrás dos badges de oferta e afinar UI/performance para conduzir à compra.
 
-As imagens (antes/depois e clientes 1–6) estão guardadas como `.asset.json` a apontar para `/__l5e/assets-v1/...`. Esse caminho **só existe nos servidores da Lovable** (preview e sites `.lovable.app`). Como `lumestore.store` está hospedado fora da Lovable (a partir do repo do GitHub), esse endpoint não existe nesse host e as imagens ficam a 404 — por isso funcionam aqui no preview mas não no domínio real.
+## Alterações
 
-## Solução
+1. **Nova foto nas Entregas reais**
+   - Subir `user-uploads://cliente-6.jpg.jpeg` para `public/images/cliente-7.jpg` (JPG local, servido pelo próprio host, igual às outras).
+   - Em `src/components/landing/CustomerPhotos.tsx`, acrescentar `/images/cliente-7.jpg` ao array `photos` (fica no carrossel arrastável).
 
-Descarregar os 8 ficheiros do CDN e commitá-los diretamente no repo em `public/images/`, servidos pelo próprio host. Substituir todas as referências aos `.asset.json` por caminhos absolutos (`/images/nome.jpg`), que funcionam em qualquer hospedagem (Lovable, Vercel, Netlify, etc.).
+2. **Remover o "efeito bolinha" atrás dos badges de oferta**
+   - O halo vem da classe `pulse-glow` (e do fundo `bg-primary/10` a criar a "pílula" iluminada) aplicada aos badges "Entrega grátis hoje em Luanda" e "Paga apenas na entrega".
+   - Em `src/components/landing/Hero.tsx` e `src/components/landing/ProductSection.tsx`: trocar os badges por uma linha limpa, sem fundo colorido nem glow — apenas ícone + texto em `text-foreground/80`, separados por um divisor subtil (`•`), alinhados com o resto do bloco.
+   - Confirmar que nada mais nos badges usa `pulse-glow`/`shadow-glow`.
 
-## Passos
+3. **UI/UX — alinhamento**
+   - Hero: normalizar spacing vertical (`mt-*`) para ritmo consistente entre headline → preço → linha de oferta → CTA → trust row.
+   - Trust row (3 ícones) e badges: mesma baseline, mesmo tamanho de ícone (`h-4 w-4`) e mesmo peso tipográfico.
+   - ProductSection: mesma linha de oferta que o Hero, para ficar coerente.
 
-1. Descarregar do CDN para `public/images/` (mantendo os nomes originais):
-   - `antes.jpg`, `depois.jpg`
-   - `cliente-1.jpg` … `cliente-6.jpg`
-2. Trocar imports/URLs em:
-   - `src/components/landing/BeforeAfterSlider.tsx`
-   - `src/components/landing/ProblemSolution.tsx` (se ainda referenciado)
-   - `src/components/landing/ProductSection.tsx` (`afterAsset`)
-   - `src/components/landing/CustomerPhotos.tsx` (c1…c6)
-   - Qualquer outro sítio que use os `.asset.json` das imagens em questão
-   
-   De:
-   ```ts
-   import a from "@/assets/antes.jpg.asset.json";
-   <img src={a.url} />
-   ```
-   Para:
-   ```tsx
-   <img src="/images/antes.jpg" />
-   ```
-3. Apagar os `.asset.json` correspondentes em `src/assets/` (deixam de ser usados).
-4. Verificar build (`bun run build`) e conferir que o HTML gerado referencia `/images/...`.
-
-## Notas
-
-- O logo SVG (`src/assets/logo.svg`) já é local, não precisa de mudança.
-- Como as imagens vão passar a viver no repo, o tamanho do GitHub aumenta ~12 MB (8 imagens ~1–2 MB cada). Se preferires manter o repo leve, posso em vez disso comprimir para WebP (≈200–400 KB cada) antes de commitar — diz-me se queres essa otimização.
+4. **Performance das imagens**
+   - Em `CustomerPhotos.tsx`: manter `loading="lazy"` nas seguintes; marcar a **primeira** foto do carrossel como `loading="eager"` + `fetchpriority="high"` e adicionar `decoding="async"` a todas.
+   - Em `BeforeAfterSlider` (Hero, acima da dobra): `fetchpriority="high"` no "antes" e "depois", `decoding="async"`; manter as dimensões `width`/`height` para reservar espaço (evita CLS).
+   - `ProductSection`: `loading="lazy"` + `decoding="async"` nas thumbs.
+   - Sem conversão para WebP nesta iteração (mantém repo simples); só metadados de loading.
 
 ## Fora do escopo
 
-- Mudar host, configurar CDN próprio, ou alterar layout/conteúdo.
+- Redesenhar secções, mudar copy, mudar cores/tema, comprimir para WebP, ou mexer em checkout/WhatsApp.
