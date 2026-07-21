@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, ShieldCheck, Truck, RotateCcw, Lock, Wallet } from "lucide-react";
 import productImg from "@/assets/product.jpg";
-import afterAsset from "@/assets/depois.jpg.asset.json";
-const afterImg = afterAsset.url;
+const afterImg = "/images/depois.jpg";
 import heroImg from "@/assets/hero.jpg";
 import { Reveal } from "./Reveal";
 

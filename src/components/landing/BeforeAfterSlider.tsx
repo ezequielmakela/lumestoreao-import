@@ -1,9 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import beforeAsset from "@/assets/antes.jpg.asset.json";
-import afterAsset from "@/assets/depois.jpg.asset.json";
-const beforeImg = beforeAsset.url;
-const afterImg = afterAsset.url;
+const beforeImg = "/images/antes.jpg";
+const afterImg = "/images/depois.jpg";
 
 export const BeforeAfterSlider = () => {
   const containerRef = useRef<HTMLDivElement>(null);

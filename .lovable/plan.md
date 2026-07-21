@@ -1,45 +1,42 @@
-# Refinamentos na Landing Lume
+# Corrigir imagens em lumestore.store (host externo via GitHub)
 
-## 1. Corrigir número de WhatsApp
-- Atualizar `src/lib/whatsapp.ts`: `WHATSAPP_NUMBER = "244952355696"`.
-- Atualizar `src/components/landing/Footer.tsx` para exibir `+244 952 355 696`.
+## Causa
 
-## 2. Remover secções desnecessárias
-- Remover `PainSection` ("Tuas roupas estão assim / Resolve em segundos") de `src/routes/index.tsx` (o antes/depois já aparece no Hero).
-- Remover `SocialWall` ("Angolanos que aprovaram") de `src/routes/index.tsx` — sem provas reais, não faz sentido manter.
-- Manter os ficheiros no repo (não usados), ou apagá-los. Proposta: apagar `PainSection.tsx` e `SocialWall.tsx` para limpar.
+As imagens (antes/depois e clientes 1–6) estão guardadas como `.asset.json` a apontar para `/__l5e/assets-v1/...`. Esse caminho **só existe nos servidores da Lovable** (preview e sites `.lovable.app`). Como `lumestore.store` está hospedado fora da Lovable (a partir do repo do GitHub), esse endpoint não existe nesse host e as imagens ficam a 404 — por isso funcionam aqui no preview mas não no domínio real.
 
-## 3. Fotos de clientes como carrossel
-- Converter `CustomerPhotos` num carrossel arrastável (swipe no mobile, drag no desktop) em vez de grid estático.
-- Usar o `carousel` do shadcn (embla) que já está disponível, com autoplay suave e snap por item.
-- Mostrar 1.2 imagens no mobile e 3 no desktop, com indicador de progresso discreto.
+## Solução
 
-## 4. Alinhar barra de trust ("+30 clientes / Entrega grátis / Garantia 7 dias")
-- Reorganizar `SocialProof` e a mini trust row do Hero para um layout limpo e alinhado (grid uniforme, mesma altura, ícones consistentes, espaçamento igual).
-- Remover ícones/emojis decorativos que não acrescentam significado (ex.: `AArrowDown` placeholder no `SocialProof` e no `ProductSection`, o item vazio `"​"`).
+Descarregar os 8 ficheiros do CDN e commitá-los diretamente no repo em `public/images/`, servidos pelo próprio host. Substituir todas as referências aos `.asset.json` por caminhos absolutos (`/images/nome.jpg`), que funcionam em qualquer hospedagem (Lovable, Vercel, Netlify, etc.).
 
-## 5. Dark / Light mode
-- Adicionar toggle de tema (sol/lua) na `Navbar`.
-- Implementar com classe `.dark` no `<html>`, persistindo em `localStorage`, com leitura em `useEffect` (evitar mismatch SSR).
-- Garantir que os tokens em `src/styles.css` já têm variante `.dark` — se não tiverem, adicionar paleta escura coerente (fundo escuro, primário mantido, contrastes ajustados).
+## Passos
 
-## 6. Reforçar a oferta
-- No Hero e no `ProductSection`, logo abaixo do preço, adicionar linha destacada:
-  - **"Entrega grátis hoje em Luanda"**
-  - **"Recebe em casa e paga apenas na entrega"**
-- Usar chip/badge com ícone `Truck` e `HandCoins`/`Wallet` para dar peso visual sem poluir.
+1. Descarregar do CDN para `public/images/` (mantendo os nomes originais):
+   - `antes.jpg`, `depois.jpg`
+   - `cliente-1.jpg` … `cliente-6.jpg`
+2. Trocar imports/URLs em:
+   - `src/components/landing/BeforeAfterSlider.tsx`
+   - `src/components/landing/ProblemSolution.tsx` (se ainda referenciado)
+   - `src/components/landing/ProductSection.tsx` (`afterAsset`)
+   - `src/components/landing/CustomerPhotos.tsx` (c1…c6)
+   - Qualquer outro sítio que use os `.asset.json` das imagens em questão
+   
+   De:
+   ```ts
+   import a from "@/assets/antes.jpg.asset.json";
+   <img src={a.url} />
+   ```
+   Para:
+   ```tsx
+   <img src="/images/antes.jpg" />
+   ```
+3. Apagar os `.asset.json` correspondentes em `src/assets/` (deixam de ser usados).
+4. Verificar build (`bun run build`) e conferir que o HTML gerado referencia `/images/...`.
 
-## 7. Polimento profissional geral
-- Rever espaçamentos entre secções (ritmo consistente `py-16 md:py-24`).
-- Uniformizar tipografia dos títulos de secção.
-- Remover caracteres invisíveis (`\u200b`) usados como placeholder.
+## Notas
 
-## Detalhes técnicos
-- Ficheiros a editar: `src/lib/whatsapp.ts`, `src/components/landing/Footer.tsx`, `src/routes/index.tsx`, `src/components/landing/CustomerPhotos.tsx`, `src/components/landing/SocialProof.tsx`, `src/components/landing/Hero.tsx`, `src/components/landing/ProductSection.tsx`, `src/components/landing/Navbar.tsx`, `src/styles.css`.
-- Ficheiros a apagar: `src/components/landing/PainSection.tsx`, `src/components/landing/SocialWall.tsx`.
-- Novo hook: `src/hooks/use-theme.tsx` para dark/light.
-- Carrossel: usar `@/components/ui/carousel` (embla) já instalado no shadcn.
+- O logo SVG (`src/assets/logo.svg`) já é local, não precisa de mudança.
+- Como as imagens vão passar a viver no repo, o tamanho do GitHub aumenta ~12 MB (8 imagens ~1–2 MB cada). Se preferires manter o repo leve, posso em vez disso comprimir para WebP (≈200–400 KB cada) antes de commitar — diz-me se queres essa otimização.
 
 ## Fora do escopo
-- Alterações de backend / checkout.
-- Novos assets de imagem.
+
+- Mudar host, configurar CDN próprio, ou alterar layout/conteúdo.

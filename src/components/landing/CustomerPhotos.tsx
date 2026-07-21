@@ -6,15 +6,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import c1 from "@/assets/cliente-1.jpg.asset.json";
-import c2 from "@/assets/cliente-2.jpg.asset.json";
-import c3 from "@/assets/cliente-3.jpg.asset.json";
-import c4 from "@/assets/cliente-4.jpg.asset.json";
-import c5 from "@/assets/cliente-5.jpg.asset.json";
-import c6 from "@/assets/cliente-6.jpg.asset.json";
 import { PackageCheck } from "lucide-react";
 
-const photos = [c1, c2, c3, c4, c5, c6];
+const photos = [
+  "/images/cliente-1.jpg",
+  "/images/cliente-2.jpg",
+  "/images/cliente-3.jpg",
+  "/images/cliente-4.jpg",
+  "/images/cliente-5.jpg",
+  "/images/cliente-6.jpg",
+];
 
 export const CustomerPhotos = () => (
   <section id="clientes" className="py-16 md:py-24 bg-muted/40">
@@ -37,14 +38,14 @@ export const CustomerPhotos = () => (
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {photos.map((p) => (
+            {photos.map((src) => (
               <CarouselItem
-                key={p.asset_id}
+                key={src}
                 className="pl-4 basis-[75%] sm:basis-1/2 md:basis-1/3"
               >
                 <div className="rounded-2xl overflow-hidden shadow-elegant bg-background">
                   <img
-                    src={p.url}
+                    src={src}
                     alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"
                     loading="lazy"
                     className="w-full aspect-[3/4] object-cover"
