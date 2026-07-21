@@ -15,6 +15,7 @@ const photos = [
   "/images/cliente-4.jpg",
   "/images/cliente-5.jpg",
   "/images/cliente-6.jpg",
+  "/images/cliente-7.jpg",
 ];
 
 export const CustomerPhotos = () => (
@@ -38,7 +39,7 @@ export const CustomerPhotos = () => (
           className="w-full"
         >
           <CarouselContent className="-ml-4">
-            {photos.map((src) => (
+            {photos.map((src, i) => (
               <CarouselItem
                 key={src}
                 className="pl-4 basis-[75%] sm:basis-1/2 md:basis-1/3"
@@ -47,7 +48,9 @@ export const CustomerPhotos = () => (
                   <img
                     src={src}
                     alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"
-                    loading="lazy"
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    {...(i === 0 ? { fetchPriority: "high" as const } : {})}
                     className="w-full aspect-[3/4] object-cover"
                   />
                 </div>

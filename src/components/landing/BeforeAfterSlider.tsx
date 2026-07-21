@@ -42,6 +42,9 @@ export const BeforeAfterSlider = () => {
       <img
         src={beforeImg}
         alt="Roupa com fiapos antes"
+        loading="eager"
+        decoding="async"
+        fetchPriority="high"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         draggable={false}
       />
@@ -57,6 +60,9 @@ export const BeforeAfterSlider = () => {
         <img
           src={afterImg}
           alt="Roupa como nova depois"
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-full object-cover"
           draggable={false}
         />

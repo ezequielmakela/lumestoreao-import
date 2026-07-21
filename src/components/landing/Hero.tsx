@@ -29,15 +29,15 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
               <span className="font-display font-bold text-xl text-primary">Kz</span>
             </div>
 
-            {/* Oferta reforçada */}
-            <div className="fade-up mt-4 flex flex-wrap gap-2 justify-center lg:justify-start" style={{ animationDelay: "0.28s" }}>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
-                <Truck className="h-4 w-4" /> Entrega grátis hoje em Luanda
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
-                <Wallet className="h-4 w-4" /> Paga apenas na entrega
-              </span>
-            </div>
+            {/* Oferta reforçada — linha limpa, sem halo */}
+            <ul className="fade-up mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start text-sm font-medium text-foreground/80" style={{ animationDelay: "0.28s" }}>
+              <li className="inline-flex items-center gap-2">
+                <Truck className="h-4 w-4 text-primary" /> Entrega grátis hoje em Luanda
+              </li>
+              <li className="inline-flex items-center gap-2">
+                <Wallet className="h-4 w-4 text-primary" /> Paga apenas na entrega
+              </li>
+            </ul>
 
             <p className="fade-up mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-destructive" style={{ animationDelay: "0.3s" }}>
               <Clock className="h-4 w-4" /> Últimas unidades

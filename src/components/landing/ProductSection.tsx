@@ -49,14 +49,14 @@ export const ProductSection = ({ onBuyClick }: { onBuyClick?: () => void }) => {
             <span className="text-lg line-through text-[#b80000] leading-none">15.000 kz</span>
           </div>
 
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
-              <Truck className="h-4 w-4" /> Entrega grátis hoje em Luanda
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 text-primary px-3 py-1.5 text-sm font-semibold">
-              <Wallet className="h-4 w-4" /> Recebe em casa e paga na entrega
-            </span>
-          </div>
+          <ul className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm font-medium text-foreground/80">
+            <li className="inline-flex items-center gap-2">
+              <Truck className="h-4 w-4 text-primary" /> Entrega grátis hoje em Luanda
+            </li>
+            <li className="inline-flex items-center gap-2">
+              <Wallet className="h-4 w-4 text-primary" /> Recebe em casa e paga na entrega
+            </li>
+          </ul>
 
           <p className="mt-3 text-sm font-semibold text-destructive">
             Restam poucas unidades
