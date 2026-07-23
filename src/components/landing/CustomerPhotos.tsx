@@ -43,13 +43,14 @@ export const CustomerPhotos = () => {
       }
       const scrolled = Math.min(Math.max(-rect.top, 0), total);
       const progress = scrolled / total;
-      const maxShift = track.scrollWidth - track.clientWidth;
+      const maxShift = track.scrollWidth - window.innerWidth;
       if (maxShift <= 0) {
         track.style.transform = "translate3d(0,0,0)";
         return;
       }
       const x = -progress * maxShift;
       track.style.transform = `translate3d(${x}px,0,0)`;
+
     };
 
     const onScroll = () => {
@@ -105,11 +106,12 @@ export const CustomerPhotos = () => {
           className="relative"
           style={{ height: `${photos.length * 90}vh` }}
         >
-          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <ul
               ref={trackRef}
-              className="flex gap-4 md:gap-6 pl-4 md:pl-8 pr-[25vw] will-change-transform"
+              className="flex gap-4 md:gap-6 pl-4 md:pl-8 pr-[25vw] w-max will-change-transform"
               style={{ transform: "translate3d(0,0,0)" }}
+
             >
               {photos.map((src, i) => (
                 <li
