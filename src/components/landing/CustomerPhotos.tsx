@@ -43,13 +43,14 @@ export const CustomerPhotos = () => {
       }
       const scrolled = Math.min(Math.max(-rect.top, 0), total);
       const progress = scrolled / total;
-      const maxShift = track.scrollWidth - track.clientWidth;
+      const maxShift = track.scrollWidth - window.innerWidth;
       if (maxShift <= 0) {
         track.style.transform = "translate3d(0,0,0)";
         return;
       }
       const x = -progress * maxShift;
       track.style.transform = `translate3d(${x}px,0,0)`;
+
     };
 
     const onScroll = () => {
