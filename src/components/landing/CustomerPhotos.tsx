@@ -106,11 +106,12 @@ export const CustomerPhotos = () => {
           className="relative"
           style={{ height: `${photos.length * 90}vh` }}
         >
-          <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <ul
               ref={trackRef}
-              className="flex gap-4 md:gap-6 pl-4 md:pl-8 pr-[25vw] will-change-transform"
+              className="flex gap-4 md:gap-6 pl-4 md:pl-8 pr-[25vw] w-max will-change-transform"
               style={{ transform: "translate3d(0,0,0)" }}
+
             >
               {photos.map((src, i) => (
                 <li
