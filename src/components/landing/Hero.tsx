@@ -5,12 +5,12 @@ import { BeforeAfterSlider } from "./BeforeAfterSlider";
 
 export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
   return (
-    <section className="relative pt-24 md:pt-28 pb-12 md:pb-16 bg-gradient-to-b from-muted/40 to-background">
+    <section className="relative pt-20 md:pt-28 pb-12 md:pb-16 bg-gradient-to-b from-muted/40 to-background">
       <div className="container-tight">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center">
           {/* Left: copy + price + CTA */}
           <div className="text-center lg:text-left">
-            <h1 className="fade-up font-display font-extrabold text-4xl sm:text-5xl md:text-6xl leading-[1.05] text-balance min-h-[2.1em]" style={{ animationDelay: "0.1s" }}>
+            <h1 className="fade-up font-display font-extrabold text-3xl sm:text-5xl md:text-6xl leading-[1.1] sm:leading-[1.05] text-balance min-h-[2.1em]" style={{ animationDelay: "0.1s" }}>
               <Typewriter
                 segments={[
                   { text: "Nunca mais deite roupas por causa dos fiapos." },
@@ -47,7 +47,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
               <Button
                 onClick={onBuyClick}
                 size="lg"
-                className="pulse-glow bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold text-base md:text-lg h-14 px-10 shadow-elegant sm:min-w-[240px]"
+                className="pulse-glow w-full sm:w-auto bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold text-base md:text-lg h-14 px-10 shadow-elegant sm:min-w-[240px]"
               >
                 Pague apenas na entrega
               </Button>
