@@ -55,10 +55,9 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
           </button>
           <Button
             onClick={onBuyClick}
-            className="hidden sm:inline-flex rounded-xl bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold shadow-elegant"
-            size="lg"
+            className="inline-flex rounded-xl bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold shadow-elegant h-10 px-4 text-sm md:h-11 md:px-6 md:text-base"
           >
-            Comprar Agora
+            Comprar
           </Button>
           <button
             className="md:hidden h-10 w-10 grid place-items-center text-foreground"
@@ -75,7 +74,7 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
           <ul className="container-tight py-4 flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>
-                <a href={l.href} onClick={() => setOpen(false)} className="block py-2 font-semibold text-foreground">
+                <a href={l.href} onClick={() => setOpen(false)} className="block py-3 min-h-11 font-semibold text-foreground">
                   {l.label}
                 </a>
               </li>
