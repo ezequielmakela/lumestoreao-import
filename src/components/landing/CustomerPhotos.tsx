@@ -16,10 +16,19 @@ export const CustomerPhotos = () => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLUListElement | null>(null);
   const [reduced, setReduced] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const update = () => setReduced(mq.matches);
+    update();
+    mq.addEventListener?.("change", update);
+    return () => mq.removeEventListener?.("change", update);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
     update();
     mq.addEventListener?.("change", update);
     return () => mq.removeEventListener?.("change", update);
@@ -104,7 +113,7 @@ export const CustomerPhotos = () => {
         <div
           ref={wrapperRef}
           className="relative"
-          style={{ height: `${photos.length * 90}vh` }}
+          style={{ height: `${photos.length * (isDesktop ? 90 : 50)}vh` }}
         >
           <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <ul
@@ -116,7 +125,7 @@ export const CustomerPhotos = () => {
               {photos.map((src, i) => (
                 <li
                   key={src}
-                  className="shrink-0 w-[75vw] sm:w-[50vw] md:w-[38vw] lg:w-[28vw]"
+                  className="shrink-0 w-[68vw] sm:w-[50vw] md:w-[38vw] lg:w-[28vw]"
                 >
                   <div className="rounded-2xl overflow-hidden shadow-elegant bg-background">
                     <img
