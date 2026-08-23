@@ -19,7 +19,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
             </h1>
 
             <p className="fade-up mt-4 text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0" style={{ animationDelay: "0.2s" }}>
-              Remove fiapos e bolinhas das tuas roupas sem esforço.
+              Recebes primeiro, pagas na entrega.
             </p>
 
             {/* Preço */}
