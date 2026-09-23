@@ -7,13 +7,13 @@ const items = [
 ];
 
 export const SocialProof = () => (
-  <section id="prova-social" className="bg-foreground text-background">
-    <div className="container-tight py-6 md:py-8">
-      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-8 text-center">
+  <section id="prova-social" className="border-y border-border bg-muted/40">
+    <div className="container-tight py-8 md:py-10">
+      <ul className="grid gap-5 sm:grid-cols-3 md:gap-8">
         {items.map(({ icon: Icon, label }) => (
-          <li key={label} className="flex items-center justify-center gap-2 md:gap-3">
-            <Icon className="h-5 w-5 text-[hsl(var(--primary-glow))] shrink-0" />
-            <span className="text-sm md:text-base font-semibold">{label}</span>
+          <li key={label} className="flex items-center gap-3">
+            <Icon className="h-5 w-5 shrink-0 text-primary" />
+            <span className="text-sm font-semibold text-foreground md:text-base">{label}</span>
           </li>
         ))}
       </ul>

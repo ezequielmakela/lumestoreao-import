@@ -25,16 +25,16 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
   return (
     <header
       className={cn(
-        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
-        scrolled ? "bg-background/95 backdrop-blur shadow-soft" : "bg-transparent",
+        "fixed inset-x-0 top-0 z-50 border-b transition-colors duration-200",
+        scrolled ? "border-border bg-background/95 backdrop-blur" : "border-transparent bg-background/90 backdrop-blur",
       )}
     >
-      <nav className="container-tight flex items-center justify-between h-16 md:h-20">
-        <a href="#" className="flex items-center gap-2 text-foreground">
-          <img src={logo} alt="Lume Store" className="h-10 md:h-12 w-auto" />
+      <nav className="container-tight grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 md:h-20">
+        <a href="#" className="flex min-w-0 items-center text-foreground">
+          <img src={logo} alt="Lume Store" className="h-9 w-auto md:h-11" />
         </a>
 
-        <ul className="hidden md:flex items-center gap-6">
+        <ul className="hidden items-center gap-6 md:flex">
           {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} className="text-sm font-bold text-primary hover:opacity-80 transition-opacity">
@@ -45,32 +45,36 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
         </ul>
 
         <div className="flex items-center gap-2 md:gap-3">
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             type="button"
             onClick={toggle}
             aria-label={theme === "dark" ? "Ativar modo claro" : "Ativar modo escuro"}
-            className="h-10 w-10 grid place-items-center rounded-full text-foreground hover:bg-muted transition-colors"
+            className="h-11 w-11 rounded-md text-foreground"
           >
             {mounted && theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-          </button>
+          </Button>
           <Button
             onClick={onBuyClick}
-            className="inline-flex rounded-xl bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold shadow-elegant h-10 px-4 text-sm md:h-11 md:px-6 md:text-base"
+            className="h-11 rounded-md bg-primary px-4 font-display text-sm font-bold text-primary-foreground shadow-none hover:bg-primary/90 md:px-6 md:text-base"
           >
             Comprar
           </Button>
-          <button
-            className="md:hidden h-10 w-10 grid place-items-center text-foreground"
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-11 w-11 rounded-md text-foreground md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
             {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          </Button>
         </div>
       </nav>
 
       {open && (
-        <div className="md:hidden bg-background border-t shadow-soft">
+        <div className="border-t border-border bg-background md:hidden">
           <ul className="container-tight py-4 flex flex-col gap-4">
             {links.map((l) => (
               <li key={l.href}>
