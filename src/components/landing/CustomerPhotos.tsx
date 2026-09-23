@@ -3,13 +3,13 @@ import { Reveal } from "./Reveal";
 import { PackageCheck } from "lucide-react";
 
 const photos = [
-  "/images/cliente-1.jpg",
-  "/images/cliente-2.jpg",
-  "/images/cliente-3.jpg",
-  "/images/cliente-4.jpg",
-  "/images/cliente-5.jpg",
-  "/images/cliente-6.jpg",
-  "/images/cliente-7.jpg",
+  "/images/cliente-1.webp",
+  "/images/cliente-2.webp",
+  "/images/cliente-3.webp",
+  "/images/cliente-4.webp",
+  "/images/cliente-5.webp",
+  "/images/cliente-6.webp",
+  "/images/cliente-7.webp",
 ];
 
 export const CustomerPhotos = () => {
@@ -79,16 +79,16 @@ export const CustomerPhotos = () => {
 
   return (
     <section id="clientes" className="bg-muted/40">
-      <div className="container-tight pt-16 md:pt-24">
-        <Reveal className="text-center max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-sm">
+      <div className="container-tight pt-14 md:pt-20">
+        <Reveal className="max-w-2xl">
+          <span className="section-label inline-flex items-center gap-2">
             <PackageCheck className="h-4 w-4" /> Entregas reais
           </span>
-          <h2 className="mt-3 font-display font-extrabold text-3xl md:text-5xl leading-tight text-balance">
-            Clientes que já receberam o Removedor Lume
+          <h2 className="section-title mt-3">
+            Já chegou a quem comprou.
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Entregas confirmadas em Luanda e arredores.
+          <p className="section-copy mt-4">
+            Fotografias reais de clientes que receberam o Removedor Lume em Luanda e arredores.
           </p>
         </Reveal>
       </div>
@@ -113,27 +113,26 @@ export const CustomerPhotos = () => {
         <div
           ref={wrapperRef}
           className="relative"
-          style={{ height: `${photos.length * (isDesktop ? 90 : 50)}vh` }}
+          style={{ height: `${photos.length * (isDesktop ? 62 : 38)}vh` }}
         >
           <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
             <ul
               ref={trackRef}
-              className="flex gap-4 md:gap-6 pl-4 md:pl-8 pr-[25vw] w-max will-change-transform"
+              className="flex w-max gap-3 pl-5 pr-[25vw] will-change-transform md:gap-5 md:pl-8"
               style={{ transform: "translate3d(0,0,0)" }}
 
             >
               {photos.map((src, i) => (
                 <li
                   key={src}
-                  className="shrink-0 w-[68vw] sm:w-[50vw] md:w-[38vw] lg:w-[28vw]"
+                  className="w-[72vw] shrink-0 sm:w-[50vw] md:w-[38vw] lg:w-[27vw]"
                 >
-                  <div className="rounded-2xl overflow-hidden shadow-elegant bg-background">
+                  <div className="overflow-hidden rounded-lg border border-border bg-background">
                     <img
                       src={src}
                       alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"
-                      loading={i === 0 ? "eager" : "lazy"}
+                      loading="lazy"
                       decoding="async"
-                      {...(i === 0 ? { fetchPriority: "high" as const } : {})}
                       className="w-full aspect-[3/4] object-cover"
                     />
                   </div>

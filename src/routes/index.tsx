@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { UrgencyBar } from "@/components/landing/UrgencyBar";
 import { SocialProof } from "@/components/landing/SocialProof";
 import { CustomerPhotos } from "@/components/landing/CustomerPhotos";
 import { ProductSection } from "@/components/landing/ProductSection";
@@ -10,6 +9,7 @@ import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
 import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
 import { StickyBuyBar } from "@/components/landing/StickyBuyBar";
+import { HowItWorks } from "@/components/landing/HowItWorks";
 import { goToCheckout } from "@/lib/checkout";
 
 export const Route = createFileRoute("/")({
@@ -28,6 +28,8 @@ export const Route = createFileRoute("/")({
           "Removedor de Fiapos Lume — remove fiapos, pelos e bolinhas em segundos. Entrega em Angola.",
       },
       { property: "og:url", content: "/" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -42,7 +44,7 @@ function LandingPage() {
       content_category: "Removedor de Fiapos",
       content_ids: ["lume-removedor"],
       content_type: "product",
-      value: 10999,
+      value: 9000,
       currency: "AOA",
     });
   }, []);
@@ -53,9 +55,9 @@ function LandingPage() {
       <main>
         <Hero onBuyClick={goToCheckout} />
         <CustomerPhotos />
-        <UrgencyBar />
-        <SocialProof />
+        <HowItWorks />
         <ProductSection onBuyClick={goToCheckout} />
+        <SocialProof />
         <FAQ />
       </main>
       <Footer />
