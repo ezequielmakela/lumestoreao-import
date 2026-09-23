@@ -1,36 +1,31 @@
 import { Button } from "@/components/ui/button";
-import { Users, Truck, ShieldCheck, Clock, Wallet } from "lucide-react";
-import { Typewriter } from "./Typewriter";
+import { ArrowRight, Truck, ShieldCheck, Wallet } from "lucide-react";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 
 export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
   return (
-    <section className="relative pt-20 md:pt-28 pb-12 md:pb-16 bg-gradient-to-b from-muted/40 to-background">
+    <section className="relative border-b border-border bg-background pb-12 pt-20 md:pb-20 md:pt-28">
       <div className="container-tight">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center">
+        <div className="grid items-center gap-8 md:gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:gap-16">
           {/* Left: copy + price + CTA */}
-          <div className="text-center lg:text-left">
-            <h1 className="fade-up font-display font-extrabold text-3xl sm:text-5xl md:text-6xl leading-[1.1] sm:leading-[1.05] text-balance min-h-[2.1em]" style={{ animationDelay: "0.1s" }}>
-              <Typewriter
-                segments={[
-                  { text: "Nunca mais deite roupas por causa dos fiapos." },
-                ]}
-              />
+          <div className="text-left">
+            <p className="section-label">Removedor de Fiapos Lume</p>
+            <h1 className="mt-3 max-w-xl font-display text-4xl font-extrabold leading-[1.06] text-balance sm:text-5xl md:text-6xl">
+              Uma roupa boa pode parecer velha por causa dos fiapos.
             </h1>
 
-            <p className="fade-up mt-4 text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0" style={{ animationDelay: "0.2s" }}>
-              Recebes primeiro, pagas na entrega.
+            <p className="mt-4 max-w-lg text-base leading-7 text-muted-foreground md:text-lg">
+              Recupera o aspeto limpo das tuas peças sem ter de as substituir.
             </p>
 
             {/* Preço */}
-            <div className="fade-up mt-6 flex items-baseline justify-center lg:justify-start gap-3" style={{ animationDelay: "0.25s" }}>
-              <span className="text-lg line-through text-[#b80000]">15.000 Kz</span>
-              <span className="font-display font-extrabold text-4xl md:text-5xl text-primary leading-none">10.999</span>
-              <span className="font-display font-bold text-xl text-primary">Kz</span>
+            <div className="mt-6 flex items-end gap-3">
+              <span className="pb-1 text-sm text-muted-foreground line-through">15.000 Kz</span>
+              <span className="font-display text-4xl font-extrabold leading-none text-foreground md:text-5xl">9.000 Kz</span>
             </div>
 
             {/* Oferta reforçada — linha limpa, sem halo */}
-            <ul className="fade-up mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start text-sm font-medium text-foreground/80" style={{ animationDelay: "0.28s" }}>
+            <ul className="mt-5 grid gap-2 text-sm font-semibold text-foreground sm:grid-cols-2">
               <li className="inline-flex items-center gap-2">
                 <Truck className="h-4 w-4 text-primary" /> Entrega grátis hoje em Luanda
               </li>
@@ -39,31 +34,23 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
               </li>
             </ul>
 
-            <p className="fade-up mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-destructive" style={{ animationDelay: "0.3s" }}>
-              <Clock className="h-4 w-4" /> Últimas unidades
-            </p>
-
-            <div className="fade-up mt-6 flex flex-col sm:flex-row gap-3 sm:items-center justify-center lg:justify-start" style={{ animationDelay: "0.35s" }}>
+            <div className="mt-7">
               <Button
                 onClick={onBuyClick}
                 size="lg"
-                className="pulse-glow w-full sm:w-auto bg-primary hover:bg-[hsl(var(--primary-glow))] text-primary-foreground font-display font-bold text-base md:text-lg h-14 px-10 shadow-elegant sm:min-w-[240px]"
+                className="h-14 w-full rounded-md bg-primary px-8 font-display text-base font-bold text-primary-foreground shadow-none hover:bg-primary/90 sm:w-auto sm:min-w-[260px]"
               >
-                Pague apenas na entrega
+                Comprar agora <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
 
             {/* Mini trust row alinhado */}
-            <ul className="fade-up mt-8 grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 text-xs md:text-sm text-muted-foreground" style={{ animationDelay: "0.4s" }}>
-              <li className="flex flex-col items-center gap-1.5 text-center">
-                <Users className="h-5 w-5 text-primary" />
-                <span>+30 clientes</span>
-              </li>
-              <li className="flex flex-col items-center gap-1.5 text-center">
+            <ul className="mt-6 grid max-w-md grid-cols-2 gap-3 border-t border-border pt-5 text-xs text-muted-foreground md:text-sm">
+              <li className="flex items-center gap-2">
                 <Truck className="h-5 w-5 text-primary" />
-                <span>Entrega grátis</span>
+                <span>Entrega grátis em Luanda</span>
               </li>
-              <li className="flex flex-col items-center gap-1.5 text-center">
+              <li className="flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-primary" />
                 <span>Garantia 7 dias</span>
               </li>
@@ -71,7 +58,7 @@ export const Hero = ({ onBuyClick }: { onBuyClick?: () => void }) => {
           </div>
 
           {/* Right: before/after slider */}
-          <div className="fade-up" style={{ animationDelay: "0.2s" }}>
+          <div>
             <BeforeAfterSlider />
             <p className="mt-3 text-center text-xs text-muted-foreground">
               Arrasta para ver a diferença

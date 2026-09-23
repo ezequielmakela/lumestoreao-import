@@ -19,7 +19,7 @@ export const BeforeAfterSlider = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-elegant select-none touch-none bg-black"
+      className="relative aspect-[4/3] w-full select-none touch-none overflow-hidden rounded-lg border border-border bg-foreground"
       onMouseDown={(e) => {
         dragging.current = true;
         setFromClientX(e.clientX);
@@ -48,7 +48,7 @@ export const BeforeAfterSlider = () => {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none"
         draggable={false}
       />
-      <span className="absolute top-3 left-3 bg-black/70 text-white text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+      <span className="absolute left-3 top-3 rounded-sm bg-foreground/80 px-2.5 py-1 text-[10px] font-bold uppercase text-background md:text-xs">
         Antes
       </span>
 
@@ -66,17 +66,17 @@ export const BeforeAfterSlider = () => {
           className="w-full h-full object-cover"
           draggable={false}
         />
-        <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-[10px] md:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
+        <span className="absolute right-3 top-3 rounded-sm bg-primary px-2.5 py-1 text-[10px] font-bold uppercase text-primary-foreground md:text-xs">
           Depois
         </span>
       </div>
 
       {/* Handle */}
       <div
-        className="absolute top-0 bottom-0 w-[3px] bg-white shadow-elegant pointer-events-none"
+        className="absolute bottom-0 top-0 w-[3px] bg-background pointer-events-none"
         style={{ left: `${pos}%`, transform: "translateX(-50%)" }}
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-11 w-11 rounded-full bg-white shadow-elegant grid place-items-center">
+        <div className="absolute left-1/2 top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-border bg-background shadow-soft">
           <div className="flex items-center text-primary">
             <ChevronLeft className="h-4 w-4 -mr-1" />
             <ChevronRight className="h-4 w-4 -ml-1" />

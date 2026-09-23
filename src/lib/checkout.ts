@@ -8,7 +8,7 @@ export const goToCheckout = () => {
     fbq?.("track", "InitiateCheckout", {
       content_ids: ["lume-removedor"],
       num_items: 1,
-      value: 10999,
+      value: 9000,
       currency: "AOA",
     });
   } catch {}
