@@ -19,7 +19,7 @@ export const ProductSection = ({ onBuyClick }: { onBuyClick?: () => void }) => {
         {/* Gallery */}
         <Reveal>
           <div className="aspect-square overflow-hidden rounded-lg border border-border bg-card">
-            <img src={images[active]} alt="Removedor Lume" width={1024} height={1024} className="w-full h-full object-cover" />
+            <img src={images[active]} alt="Removedor Lume" width={720} height={1280} loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </div>
           <div className="mt-4 grid grid-cols-3 gap-3">
             {images.map((src, i) => (
