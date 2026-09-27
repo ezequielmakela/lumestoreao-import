@@ -2,18 +2,20 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Reveal } from "./Reveal";
 
 const faqs = [
-  { q: "Funciona em qualquer roupa?", a: "Pode ser usado em malha, lã, algodão, casacos, cobertores e estofados. Passa o aparelho suavemente e testa primeiro numa área discreta de tecidos delicados." },
-  { q: "Precisa de tomada para funcionar?", a: "Não durante o uso. O Removedor Lume tem bateria recarregável." },
-  { q: "Qual o prazo de entrega?", a: "Em Luanda entregamos em 1 a 3 dias úteis. Outras províncias: 3 a 7 dias úteis." },
-  { q: "Recebo antes de pagar?", a: "Sim. Nas zonas com pagamento na entrega, recebes o pedido em casa e pagas no momento da entrega." },
-  { q: "Tem garantia?", a: "Sim. 7 dias de garantia. Se não ficares satisfeito, trocamos ou devolvemos o teu dinheiro." },
+  { q: "O que o produto remove?", a: "O Removedor Lume ajuda a retirar fiapos, pelos e pequenas bolinhas acumuladas na superfície da roupa." },
+  { q: "É fácil de usar?", a: "Sim. Liga o aparelho e passa-o suavemente sobre o tecido para recolher os fiapos." },
+  { q: "Posso usar em diferentes tipos de roupa?", a: "Pode ser usado em diferentes peças. Em tecidos delicados, testa primeiro numa zona discreta e evita pressionar o aparelho." },
+  { q: "Quanto custa?", a: "O Removedor de Fiapos Lume custa 9.000 Kz." },
+  { q: "Como funciona a entrega?", a: "A entrega é combinada para uma morada ou ponto de referência em Luanda." },
+  { q: "Posso pagar na entrega?", a: "Sim. Não precisas pagar agora; o pagamento é feito quando receberes o pedido." },
+  { q: "Vocês entregam em Luanda?", a: "Sim, fazemos entregas em Luanda." },
 ];
 
 export const FAQ = () => (
-    <section className="border-t border-border bg-muted/40 py-14 md:py-20">
+    <section id="faq" className="story-section border-t border-border bg-muted/40">
     <div className="container-tight max-w-3xl mx-auto">
       <Reveal>
-        <span className="section-label">Dúvidas frequentes</span>
+        <span className="section-label">Perguntas frequentes</span>
         <h2 className="section-title mt-3">
           Tudo o que precisas de saber
         </h2>

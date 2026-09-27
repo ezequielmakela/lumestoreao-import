@@ -25,5 +25,5 @@ export const buildOrderUrl = (o: OrderInfo) => {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
 };
 
-export const buildSimpleUrl = (text = "Olá, vi o Removedor de Fiapos e quero comprar.") =>
+export const buildSimpleUrl = (text = "Olá, vi o Removedor de Fiapos Lume e gostaria de saber mais.") =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
