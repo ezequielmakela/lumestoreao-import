@@ -7,8 +7,9 @@ export const WhatsAppButton = () => (
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Falar no WhatsApp"
-    className="fixed bottom-28 right-4 z-30 grid h-12 w-12 place-items-center rounded-full border border-border bg-foreground text-background shadow-soft transition-opacity hover:opacity-85 md:bottom-6 md:right-6 md:h-14 md:w-14"
+    className="whatsapp-link fixed bottom-28 right-4 z-30 inline-flex h-12 items-center gap-2 rounded-full border border-border bg-foreground px-3 text-background shadow-soft transition-transform hover:-translate-y-1 md:bottom-6 md:right-6 md:h-14 md:px-5"
   >
-    <MessageCircle className="h-7 w-7" />
+    <MessageCircle className="h-6 w-6" />
+    <span className="hidden text-xs font-bold uppercase md:inline">Falar no WhatsApp</span>
   </a>
 );

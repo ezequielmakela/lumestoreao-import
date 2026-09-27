@@ -10,15 +10,14 @@ export const StickyBuyBar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
   }, []);
   if (!show) return null;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 p-3 backdrop-blur md:hidden safe-bottom">
-      <div className="flex items-center gap-3">
-        <div className="flex-1">
-          <p className="text-xs leading-none text-muted-foreground line-through">15.000 Kz</p>
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 p-3 backdrop-blur-md md:hidden safe-bottom animate-slide-in-right">
+      <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
+        <div className="min-w-0">
+          <p className="truncate text-xs font-semibold text-muted-foreground">Removedor de Fiapos</p>
           <p className="font-display text-lg font-extrabold leading-tight text-foreground">9.000 Kz</p>
-          <p className="text-[10px] text-muted-foreground leading-tight">Pagamento na entrega</p>
         </div>
-        <Button onClick={onBuyClick} size="lg" className="h-12 flex-1 rounded-md bg-primary font-display font-bold hover:bg-primary/90">
-          Comprar agora
+        <Button onClick={onBuyClick} size="lg" className="h-12 shrink-0 rounded-sm bg-primary px-6 font-display text-sm font-bold uppercase hover:bg-primary/90">
+          Pedir agora
         </Button>
       </div>
     </div>

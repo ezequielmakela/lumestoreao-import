@@ -1,23 +1,26 @@
 import { MessageCircle, Instagram, MapPin } from "lucide-react";
+import { buildSimpleUrl } from "@/lib/whatsapp";
 
 export const Footer = () => (
-  <footer className="bg-foreground py-12 text-background">
-    <div className="container-tight grid md:grid-cols-2 gap-10 md:gap-16">
-      <div>
-        <h3 className="font-display font-extrabold text-2xl">
-          Lume​ Store
-        </h3>
-        <p className="mt-3 text-background/70 max-w-sm leading-relaxed">
-          Tecnologia simples para recuperar o aspeto limpo das tuas roupas. Entrega em Luanda.
+  <footer className="border-t border-background/15 bg-foreground py-12 text-background">
+    <div className="container-tight grid gap-12 md:grid-cols-12">
+      <div className="md:col-span-6">
+        <h3 className="font-display text-3xl font-extrabold uppercase">Lume Store</h3>
+        <p className="mt-4 max-w-sm leading-relaxed text-background/60">
+          Produtos simples. Problemas reais. Soluções inteligentes.
         </p>
       </div>
-      <div>
-        <h4 className="font-display text-sm font-bold uppercase text-background/80">Fala connosco</h4>
-        <ul className="mt-4 space-y-3 text-background/80">
-          <li className="flex items-center gap-2"><MessageCircle className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> WhatsApp: +244 952 355 696</li>
-          <li><a href="https://www.instagram.com/lumestore.ao/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[hsl(var(--primary-glow))]"><Instagram className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> @lumestore.ao</a></li>
-          <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-[hsl(var(--primary-glow))]" /> Luanda, Angola</li>
+      <div className="md:col-span-3">
+        <h4 className="font-display text-xs font-bold uppercase text-background/50">Contacto</h4>
+        <ul className="mt-5 space-y-4 text-sm text-background/75">
+          <li><a href={buildSimpleUrl()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary"><MessageCircle className="h-4 w-4 text-primary" /> WhatsApp</a></li>
+          <li><a href="https://www.instagram.com/lumestore.ao/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary"><Instagram className="h-4 w-4 text-primary" /> Instagram</a></li>
+          <li className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Luanda, Angola</li>
         </ul>
+      </div>
+      <div className="md:col-span-3">
+        <h4 className="font-display text-xs font-bold uppercase text-background/50">Informação</h4>
+        <p className="mt-5 text-sm leading-7 text-background/60">Política de privacidade e termos serão publicados quando o conteúdo legal estiver disponível.</p>
       </div>
     </div>
     <div className="container-tight mt-10 pt-8 border-t border-background/10 text-sm text-background/60">

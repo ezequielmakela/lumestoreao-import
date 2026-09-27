@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { Reveal } from "./Reveal";
-import { PackageCheck } from "lucide-react";
 
 const photos = [
   "/images/cliente-1.webp",
@@ -80,13 +79,13 @@ export const CustomerPhotos = () => {
   return (
     <section id="clientes" className="bg-muted/40">
       <div className="container-tight pt-14 md:pt-20">
-        <Reveal className="max-w-2xl">
-          <span className="section-label inline-flex items-center gap-2">
-            <PackageCheck className="h-4 w-4" /> Entregas reais
-          </span>
+        <Reveal className="grid gap-5 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+          <span className="section-label">Entregas reais</span>
           <h2 className="section-title mt-3">
-            Já chegou a quem comprou.
+            Pessoas reais. Entregas reais.
           </h2>
+          </div>
           <p className="section-copy mt-4">
             Fotografias reais de clientes que receberam o Removedor Lume em Luanda e arredores.
           </p>
@@ -95,7 +94,7 @@ export const CustomerPhotos = () => {
 
       {reduced ? (
         <div className="container-tight py-10">
-          <ul className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <ul className="grid grid-cols-2 gap-4 md:grid-cols-3">
             {photos.map((src) => (
               <li key={src} className="rounded-2xl overflow-hidden shadow-elegant bg-background">
                 <img
@@ -120,14 +119,13 @@ export const CustomerPhotos = () => {
               ref={trackRef}
               className="flex w-max gap-3 pl-5 pr-[25vw] will-change-transform md:gap-5 md:pl-8"
               style={{ transform: "translate3d(0,0,0)" }}
-
             >
               {photos.map((src, i) => (
                 <li
                   key={src}
-                  className="w-[72vw] shrink-0 sm:w-[50vw] md:w-[38vw] lg:w-[27vw]"
+                    className="w-[72vw] shrink-0 sm:w-[50vw] md:w-[38vw] lg:w-[27vw]"
                 >
-                  <div className="overflow-hidden rounded-lg border border-border bg-background">
+                  <div className="customer-frame overflow-hidden border border-border bg-background">
                     <img
                       src={src}
                       alt="Cliente Lume com o Removedor de Fiapos recebido em Angola"

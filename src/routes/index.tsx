@@ -2,30 +2,30 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
-import { SocialProof } from "@/components/landing/SocialProof";
 import { CustomerPhotos } from "@/components/landing/CustomerPhotos";
 import { ProductSection } from "@/components/landing/ProductSection";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
 import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
 import { StickyBuyBar } from "@/components/landing/StickyBuyBar";
-import { HowItWorks } from "@/components/landing/HowItWorks";
+import { BenefitsSection, DiscoverySection, EditorialSteps, ProblemSection, TransformationSection } from "@/components/landing/StorySections";
+import { FinalCTA } from "@/components/landing/FinalCTA";
 import { goToCheckout } from "@/lib/checkout";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lume Store — Removedor de Fiapos" },
+      { title: "Lume Store — Removedor de Fiapos em Angola" },
       {
         name: "description",
         content:
-          "Removedor de Fiapos Lume — remove fiapos, pelos e bolinhas em segundos. Entrega em Angola. Peça o seu hoje.",
+          "Recupera o aspeto limpo das tuas roupas com o Removedor de Fiapos Lume. Entrega em Luanda e pagamento na entrega.",
       },
-      { property: "og:title", content: "Lume Store — Removedor de Fiapos" },
+      { property: "og:title", content: "Lume Store — Removedor de Fiapos em Angola" },
       {
         property: "og:description",
         content:
-          "Removedor de Fiapos Lume — remove fiapos, pelos e bolinhas em segundos. Entrega em Angola.",
+          "A tua roupa não está velha. Recupera o seu aspeto com o Removedor de Fiapos Lume por 9.000 Kz.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
@@ -50,15 +50,19 @@ function LandingPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="top" className="min-h-screen bg-background">
       <Navbar onBuyClick={goToCheckout} />
       <main>
         <Hero onBuyClick={goToCheckout} />
+        <ProblemSection />
+        <DiscoverySection />
+        <TransformationSection />
+        <EditorialSteps />
+        <BenefitsSection />
         <CustomerPhotos />
-        <HowItWorks />
         <ProductSection onBuyClick={goToCheckout} />
-        <SocialProof />
         <FAQ />
+        <FinalCTA onBuyClick={goToCheckout} />
       </main>
       <Footer />
       <WhatsAppButton />
