@@ -16,7 +16,7 @@ export const Reveal = ({ children, className, delay = 0, as: Tag = "div" }: Reve
       ref={ref as never}
       style={{ transitionDelay: visible ? `${delay}ms` : "0ms" }}
       className={cn(
-        "transition-all duration-700 ease-out will-change-transform",
+        "transition-[opacity,transform] duration-700 ease-out",
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8",
         className,
       )}

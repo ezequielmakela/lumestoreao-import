@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import logo from "@/assets/logo.svg";
 
 const links = [
   { label: "Produto", href: "#produto" },
@@ -30,8 +29,9 @@ export const Navbar = ({ onBuyClick }: { onBuyClick?: () => void }) => {
       )}
     >
       <nav className="container-tight grid h-16 grid-cols-[minmax(0,1fr)_auto] items-center gap-2 md:h-20">
-        <a href="#top" className="flex min-w-0 items-center text-foreground" aria-label="Lume Store — início">
-          <img src={logo} alt="Lume Store" className="h-9 w-auto md:h-11" />
+        <a href="#top" className="flex min-w-0 items-baseline gap-1 text-foreground" aria-label="Lume Store — início">
+          <span className="font-display text-xl font-extrabold uppercase md:text-2xl">Lume</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
         </a>
 
         <ul className="hidden items-center gap-6 lg:flex">
