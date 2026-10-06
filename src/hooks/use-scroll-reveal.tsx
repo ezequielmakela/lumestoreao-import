@@ -9,6 +9,10 @@ export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (!("IntersectionObserver" in window)) {
+      setVisible(true);
+      return;
+    }
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -18,7 +22,11 @@ export const useScrollReveal = <T extends HTMLElement = HTMLDivElement>(
       });
     }, options);
     observer.observe(el);
-    return () => observer.disconnect();
+    const fallback = window.setTimeout(() => setVisible(true), 1200);
+    return () => {
+      window.clearTimeout(fallback);
+      observer.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
