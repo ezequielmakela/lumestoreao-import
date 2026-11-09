@@ -5,4 +5,4 @@
 - [x] Reduzir o peso das imagens e carregamento inicial
 - [x] Validar telefone, desktop, compra e ausência de erros
 - [x] Implementar e validar a experiência premium aprovada
-- [ ] Resolver discrepância do preço no checkout externo (bloqueado pelo fornecedor do checkout)
+- [ ] Substituir a loja Lume pela experiência VEYRO aprovada, com catálogo, fichas de produto e pedidos por WhatsApp
