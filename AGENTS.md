@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep each product storefront cohesive in a dedicated feature component, with catalog facts and WhatsApp message construction centralized in a browser-safe module; this keeps product details consistent between cards and checkout intents.
