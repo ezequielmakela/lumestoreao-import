@@ -1,16 +1,15 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
-@import "@fontsource/montserrat/600.css";
-@import "@fontsource/montserrat/700.css";
-@import "@fontsource/montserrat/800.css";
-@import "@fontsource/open-sans/400.css";
-@import "@fontsource/open-sans/600.css";
+@import "@fontsource/montserrat/300.css";
+@import "@fontsource/montserrat/400.css";
+@import "@fontsource/montserrat/500.css";
+@import "@fontsource/cormorant-garamond/500-italic.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Lume Store design system.
+ * VEYRO quiet-luxury design system.
  * HSL tokens (Tailwind v3-style triplets) are consumed via hsl(var(--…))
  * inside the @theme inline mapping so classes like bg-primary work directly.
  */
@@ -22,8 +21,9 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
-  --font-display: "Montserrat", system-ui, sans-serif;
-  --font-body: "Open Sans", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Montserrat", system-ui, sans-serif;
 
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
@@ -55,42 +55,42 @@
   --color-sidebar-border: hsl(var(--sidebar-border));
   --color-sidebar-ring: hsl(var(--sidebar-ring));
 
-  --shadow-soft: 0 12px 40px -18px hsl(263 40% 10% / 0.2);
-  --shadow-elegant: 0 30px 80px -36px hsl(263 70% 20% / 0.34);
-  --shadow-card-elegant: 0 1px 2px hsl(0 0% 0% / 0.04), 0 18px 50px -34px hsl(263 40% 10% / 0.24);
+  --shadow-soft: 0 1px 3px hsl(0 0% 0% / 0.06);
+  --shadow-elegant: 0 1px 4px hsl(0 0% 0% / 0.08);
+  --shadow-card-elegant: 0 1px 2px hsl(0 0% 0% / 0.04);
 }
 
 :root {
   --radius: 0.5rem;
 
-  --background: 40 20% 98%;
-  --foreground: 270 9% 7%;
+  --background: 0 0% 97.25%;
+  --foreground: 0 0% 6.67%;
 
   --card: 0 0% 100%;
-  --card-foreground: 270 9% 7%;
+  --card-foreground: 0 0% 6.67%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 6%;
 
-  --primary: 264 72% 42%;
+  --primary: 0 0% 6.67%;
   --primary-foreground: 0 0% 100%;
-  --primary-glow: 263 72% 55%;
+  --primary-glow: 0 0% 22%;
 
   --secondary: 0 0% 96%;
   --secondary-foreground: 0 0% 10%;
 
-  --muted: 270 8% 94%;
-  --muted-foreground: 270 5% 39%;
+  --muted: 0 0% 94.12%;
+  --muted-foreground: 0 0% 43%;
 
-  --accent: 264 40% 92%;
-  --accent-foreground: 263 70% 30%;
+  --accent: 0 0% 92%;
+  --accent-foreground: 0 0% 6.67%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 270 9% 86%;
-  --input: 270 9% 86%;
-  --ring: 263 70% 36%;
+  --border: 0 0% 87%;
+  --input: 0 0% 87%;
+  --ring: 0 0% 25%;
 
   --sidebar-background: 0 0% 98%;
   --sidebar-foreground: 240 5.3% 26.1%;

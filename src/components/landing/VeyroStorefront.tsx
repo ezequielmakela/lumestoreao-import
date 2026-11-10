@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowDown, ArrowUpRight, Instagram, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Menu, MessageCircle, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -115,6 +115,7 @@ export function VeyroStorefront() {
                 </button>
               ))}
             </div>
+            <p className="mt-6 text-[9px] font-light text-muted-foreground">Imagens ilustrativas.</p>
           </div>
         </section>
 
@@ -131,7 +132,7 @@ export function VeyroStorefront() {
         <section className="veyro-proof px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
           <div className="mx-auto flex max-w-[90rem] flex-col items-start gap-6 border-b border-border pb-14 sm:flex-row sm:items-center sm:justify-between sm:pb-16">
             <div className="flex items-start gap-4">
-              <span className="veyro-proof-mark mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border" aria-hidden="true"><Instagram className="h-4 w-4" /></span>
+              <span className="veyro-proof-mark mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border" aria-hidden="true"><Users className="h-4 w-4" /></span>
               <div>
                 <p className="veyro-proof-title">Mais de 15 membros</p>
                 <p className="mt-2 text-xs font-light text-muted-foreground">já entraram no Clube VEYRO</p>
@@ -150,8 +151,8 @@ export function VeyroStorefront() {
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] uppercase">
             <a href={contactUrl} target="_blank" rel="noopener noreferrer" className="veyro-footer-link inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a>
-            <span className="text-muted-foreground">Instagram</span>
-            <span className="text-muted-foreground">TikTok</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">Instagram</a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">TikTok</a>
             <span className="w-full text-[8px] text-muted-foreground sm:ml-3 sm:w-auto">© VEYRO {new Date().getFullYear()}</span>
           </div>
         </div>
