@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
+
 export const VEYRO_PRICE = 9777;
 export const VEYRO_REFERENCE_PRICE = 12477;
 
@@ -35,7 +37,6 @@ export const formatVeyroPrice = (price: number) =>
   `${new Intl.NumberFormat("pt-AO").format(price)} Kz`;
 
 export const buildVeyroOrderUrl = (product: VeyroProduct) => {
-  const optionText = product.option ? ` Opção: ${product.option.value}.` : "";
-  const message = `Olá, quero garantir o ${product.name} da VEYRO.${optionText} Pagamento na entrega.`;
-  return `https://wa.me/244952355696?text=${encodeURIComponent(message)}`;
+  const message = `Olá, quero garantir o ${product.name} da VEYRO. Pagamento na entrega.`;
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
