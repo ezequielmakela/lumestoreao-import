@@ -5,7 +5,6 @@ export type VeyroProduct = {
   id: string;
   name: string;
   category: string;
-  image: string;
   alt: string;
   option?: { label: string; value: string };
 };
@@ -15,7 +14,6 @@ export const VEYRO_PRODUCTS: VeyroProduct[] = [
     id: "oculos-transparente",
     name: "Óculos Transparente",
     category: "Óculos",
-    image: "glasses",
     alt: "Óculos de armação transparente sobre fundo cinza-claro",
     option: { label: "Cor", value: "Transparente" },
   },
@@ -23,14 +21,12 @@ export const VEYRO_PRODUCTS: VeyroProduct[] = [
     id: "relogio-quadrado",
     name: "Relógio Quadrado",
     category: "Relógios",
-    image: "watch",
     alt: "Relógio de mostrador quadrado preto sobre fundo cinza-claro",
   },
   {
     id: "pulseira",
     name: "Pulseira",
     category: "Pulseiras",
-    image: "bracelet",
     alt: "Pulseira de elos sobre fundo cinza-claro",
   },
 ];

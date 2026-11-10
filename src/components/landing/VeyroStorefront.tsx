@@ -202,7 +202,7 @@ export function VeyroStorefront() {
                 <p>Pagamento na entrega</p>
                 <p className="mt-2">Confirma o teu pedido diretamente connosco.</p>
               </div>
-              <div className="mt-auto pt-8">
+              <div className="veyro-dialog-action mt-auto pt-8">
                 <Button asChild className="veyro-whatsapp-cta min-h-12 w-full rounded-full bg-foreground text-[10px] font-normal uppercase text-background hover:bg-foreground/90">
                   <a href={buildVeyroOrderUrl(selectedProduct)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(selectedProduct)}>
                     Comprar via WhatsApp <ArrowUpRight className="h-4 w-4" />

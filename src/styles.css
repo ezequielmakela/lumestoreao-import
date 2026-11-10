@@ -158,6 +158,8 @@
   color: var(--color-foreground);
 }
 
+.veyro-header.is-scrolled .veyro-header-link { color: var(--color-foreground); }
+
 .veyro-header-link {
   color: currentColor;
   font-family: var(--font-body);
@@ -199,7 +201,7 @@
 .veyro-mobile-menu svg { width: 0.875rem; height: 0.875rem; }
 
 .veyro-hero-shade {
-  background: linear-gradient(90deg, hsl(0 0% 0% / 0.67), hsl(0 0% 0% / 0.3) 46%, hsl(0 0% 0% / 0.03) 100%), linear-gradient(0deg, hsl(0 0% 0% / 0.34), transparent 42%);
+  background: linear-gradient(90deg, color-mix(in srgb, var(--color-foreground) 67%, transparent), color-mix(in srgb, var(--color-foreground) 30%, transparent) 46%, transparent 100%), linear-gradient(0deg, color-mix(in srgb, var(--color-foreground) 34%, transparent), transparent 42%);
 }
 
 .veyro-kicker {
@@ -248,6 +250,14 @@
 .veyro-footer-link { transition: opacity 180ms ease; }
 
 .veyro-product-dialog > button[aria-label="Close"] { display: none; }
+.veyro-product-dialog > button[class*="absolute"] { display: none; }
+
+.veyro-dialog-action {
+  position: sticky;
+  bottom: 0;
+  background: var(--color-background);
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
 
 @media (min-width: 640px) {
   .veyro-display { font-size: clamp(5.2rem, 8vw, 8.5rem); }
@@ -256,7 +266,7 @@
 
 @media (max-width: 639px) {
   .veyro-hero-shade {
-    background: linear-gradient(0deg, hsl(0 0% 0% / 0.72), hsl(0 0% 0% / 0.22) 55%, hsl(0 0% 0% / 0.1));
+    background: linear-gradient(0deg, color-mix(in srgb, var(--color-foreground) 72%, transparent), color-mix(in srgb, var(--color-foreground) 22%, transparent) 55%, color-mix(in srgb, var(--color-foreground) 10%, transparent));
   }
   .veyro-dialog-image { height: 46dvh; }
   .veyro-dialog-details { height: 54dvh; }
