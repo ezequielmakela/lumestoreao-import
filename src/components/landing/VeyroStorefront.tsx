@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Menu, MessageCircle, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,12 +15,28 @@ import {
   VEYRO_REFERENCE_PRICE,
   type VeyroProduct,
 } from "@/lib/veyro";
+import heroImage from "@/assets/veyro-hero.webp";
+import glassesImage from "@/assets/veyro-glasses.webp";
+import watchImage from "@/assets/veyro-watch.webp";
+import braceletImage from "@/assets/veyro-bracelet.webp";
 
-const heroImage = "/images/veyro-hero.jpg";
+const productImages: Record<string, string> = {
+  "oculos-transparente": glassesImage,
+  "relogio-quadrado": watchImage,
+  pulseira: braceletImage,
+};
 
 export function VeyroStorefront() {
   const [selectedProduct, setSelectedProduct] = useState<VeyroProduct | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const trackWhatsAppClick = (product: VeyroProduct) => {
     const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
@@ -36,7 +52,7 @@ export function VeyroStorefront() {
 
   return (
     <div id="top" className="min-h-screen bg-background text-foreground">
-      <header className="veyro-header fixed inset-x-0 top-0 z-40">
+      <header className={`veyro-header fixed inset-x-0 top-0 z-40 ${scrolled ? "is-scrolled" : ""}`}>
         <div className="relative mx-auto flex h-[4.5rem] max-w-[90rem] items-center justify-between px-5 sm:px-8 lg:h-20 lg:px-12">
           <a href="#colecao" className="veyro-header-link hidden text-[10px] uppercase sm:block">A coleção</a>
           <Button
@@ -98,7 +114,7 @@ export function VeyroStorefront() {
                   aria-label={`Ver ${product.name}`}
                 >
                   <span className="veyro-product-image relative block aspect-[0.91] overflow-hidden bg-muted sm:aspect-[0.95]">
-                    <img src={product.image} alt={product.alt} width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]" />
+                    <img src={productImages[product.id]} alt={product.alt} width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]" />
                     <span className="veyro-quick-view absolute bottom-3 right-3 hidden h-10 w-10 items-center justify-center rounded-full bg-background text-foreground sm:flex" aria-hidden="true"><ArrowUpRight className="h-4 w-4" /></span>
                   </span>
                   <span className="mt-4 flex items-baseline justify-between gap-2 sm:mt-5">
@@ -151,8 +167,8 @@ export function VeyroStorefront() {
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] uppercase">
             <a href={contactUrl} target="_blank" rel="noopener noreferrer" className="veyro-footer-link inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">Instagram</a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">TikTok</a>
+            <span className="text-muted-foreground">Instagram</span>
+            <span className="text-muted-foreground">TikTok</span>
             <span className="w-full text-[8px] text-muted-foreground sm:ml-3 sm:w-auto">© VEYRO {new Date().getFullYear()}</span>
           </div>
         </div>
@@ -162,7 +178,7 @@ export function VeyroStorefront() {
         {selectedProduct && (
           <DialogContent className="veyro-product-dialog grid h-[100dvh] w-screen max-w-none translate-x-[-50%] translate-y-[-50%] grid-cols-1 gap-0 overflow-hidden rounded-none border-0 bg-background p-0 sm:h-[88dvh] sm:w-[92vw] sm:max-w-6xl sm:grid-cols-2">
             <div className="veyro-dialog-image relative min-h-0 bg-muted">
-              <img src={selectedProduct.image} alt={selectedProduct.alt} width={1024} height={1024} className="h-full w-full object-cover" />
+              <img src={productImages[selectedProduct.id]} alt={selectedProduct.alt} width={1024} height={1024} className="h-full w-full object-cover" />
               <span className="absolute bottom-5 left-5 text-[9px] uppercase text-foreground/60">VEYRO · {selectedProduct.category}</span>
             </div>
             <div className="veyro-dialog-details flex min-h-0 flex-col overflow-y-auto px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-7 sm:px-9 sm:pb-9 sm:pt-12 lg:px-14">
