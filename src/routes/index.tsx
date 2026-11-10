@@ -1,35 +1,27 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Navbar } from "@/components/landing/Navbar";
-import { Hero } from "@/components/landing/Hero";
-import { CustomerPhotos } from "@/components/landing/CustomerPhotos";
-import { ProductSection } from "@/components/landing/ProductSection";
-import { FAQ } from "@/components/landing/FAQ";
-import { Footer } from "@/components/landing/Footer";
-import { WhatsAppButton } from "@/components/landing/WhatsAppButton";
-import { StickyBuyBar } from "@/components/landing/StickyBuyBar";
-import { BenefitsSection, DiscoverySection, EditorialSteps, ProblemSection, TransformationSection } from "@/components/landing/StorySections";
-import { FinalCTA } from "@/components/landing/FinalCTA";
-import { goToCheckout } from "@/lib/checkout";
+import { VeyroStorefront } from "@/components/landing/VeyroStorefront";
+import { VEYRO_PRICE, VEYRO_PRODUCTS } from "@/lib/veyro";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lume Store — Removedor de Fiapos em Angola" },
+      { title: "VEYRO — Acessórios Quiet Luxury em Luanda" },
       {
         name: "description",
         content:
-          "Recupera o aspeto limpo das tuas roupas com o Removedor de Fiapos Lume. Entrega em Luanda e pagamento na entrega.",
+          "Descobre a seleção de óculos, relógios e pulseiras VEYRO. Estilo discreto, compra simples pelo WhatsApp e pagamento na entrega em Luanda.",
       },
-      { property: "og:title", content: "Lume Store — Removedor de Fiapos em Angola" },
+      { property: "og:title", content: "VEYRO — Acessórios Quiet Luxury em Luanda" },
       {
         property: "og:description",
-        content:
-          "A tua roupa não está velha. Recupera o seu aspeto com o Removedor de Fiapos Lume por 9.000 Kz.",
+        content: "Óculos, relógios e pulseiras escolhidos para um estilo discreto. Compra pelo WhatsApp e paga na entrega em Luanda.",
       },
       { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "VEYRO — Acessórios Quiet Luxury em Luanda" },
+      { name: "twitter:description", content: "Óculos, relógios e pulseiras VEYRO. Compra pelo WhatsApp em Luanda." },
     ],
     links: [{ rel: "canonical", href: "/" }],
   }),
@@ -40,33 +32,16 @@ function LandingPage() {
   useEffect(() => {
     const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
     fbq?.("track", "ViewContent", {
-      content_name: "Removedor de Fiapos Lume",
-      content_category: "Removedor de Fiapos",
-      content_ids: ["lume-removedor"],
-      content_type: "product",
-      value: 9000,
+      content_name: "Coleção VEYRO",
+      content_category: "Acessórios",
+      content_ids: VEYRO_PRODUCTS.map((product) => `veyro-${product.id}`),
+      content_type: "product_group",
+      value: VEYRO_PRICE,
       currency: "AOA",
     });
   }, []);
 
   return (
-    <div id="top" className="min-h-screen bg-background">
-      <Navbar onBuyClick={goToCheckout} />
-      <main>
-        <Hero onBuyClick={goToCheckout} />
-        <ProblemSection />
-        <DiscoverySection />
-        <TransformationSection />
-        <EditorialSteps />
-        <BenefitsSection />
-        <CustomerPhotos />
-        <ProductSection onBuyClick={goToCheckout} />
-        <FAQ />
-        <FinalCTA onBuyClick={goToCheckout} />
-      </main>
-      <Footer />
-      <WhatsAppButton />
-      <StickyBuyBar onBuyClick={goToCheckout} />
-    </div>
+    <VeyroStorefront />
   );
 }

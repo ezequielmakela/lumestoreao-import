@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep each product storefront cohesive in a dedicated feature component, with catalog facts and WhatsApp message construction centralized in a browser-safe module; this keeps product details consistent between cards and checkout intents.
+- Keep the root error screen in a lazy-loaded component module because the current TanStack Start route type requires a lazy error component and splitting it preserves the route boundary.
