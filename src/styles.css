@@ -259,6 +259,14 @@
 
 .veyro-product-dialog > button[aria-label="Close"] { display: none; }
 .veyro-product-dialog > button[class*="absolute"] { display: none; }
+.veyro-product:focus-visible,
+.veyro-header a:focus-visible,
+.veyro-mobile-menu a:focus-visible,
+.veyro-footer a:focus-visible,
+.veyro-button:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
+}
 
 .veyro-dialog-action {
   position: sticky;
