@@ -84,7 +84,7 @@ export function VeyroStorefront() {
           <div className="relative z-10 mx-auto grid w-full max-w-[90rem] grid-cols-4 items-end gap-6 px-5 pb-16 pt-36 sm:px-8 sm:pb-20 lg:grid-cols-12 lg:px-12 lg:pb-24">
             <div className="col-span-4 max-w-[42rem] lg:col-span-8">
               <p className="veyro-kicker veyro-hero-copy-soft">VEYRO · LUANDA</p>
-              <h1 className="veyro-display veyro-hero-copy mt-5 max-w-3xl">O estilo certo <em>não faz barulho.</em></h1>
+              <h1 className="veyro-display veyro-hero-copy mt-5 max-w-3xl"><span>O estilo certo</span><span>não faz barulho.</span></h1>
               <a href="#colecao" className="veyro-button veyro-button-light mt-8 inline-flex min-h-12 items-center justify-center gap-6 px-6 text-[10px] uppercase sm:mt-10">
                 Explorar coleção <ArrowDown className="h-4 w-4" />
               </a>
