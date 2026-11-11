@@ -216,7 +216,7 @@
 
 .veyro-display {
   font-family: var(--font-editorial);
-  font-size: clamp(3.3rem, 12vw, 5.6rem);
+  font-size: 3rem;
   font-style: italic;
   font-weight: 500;
   line-height: 0.94;
@@ -224,8 +224,13 @@
   text-wrap: balance;
 }
 
+.veyro-display span { display: block; }
+
 .veyro-display em,
 .veyro-manifesto-title em { font-weight: 500; }
+
+.veyro-hero-copy { color: var(--color-background); }
+.veyro-hero-copy-soft { color: color-mix(in srgb, var(--color-background) 70%, transparent); }
 
 .veyro-button {
   font-family: var(--font-body);
@@ -234,8 +239,8 @@
   transition: background-color 200ms ease, color 200ms ease;
 }
 
-.veyro-button-light { border: 1px solid hsl(0 0% 100% / 0.7); color: white; }
-.veyro-button-light:hover { background: white; color: var(--color-foreground); }
+.veyro-button-light { border: 1px solid color-mix(in srgb, var(--color-background) 70%, transparent); color: var(--color-background); }
+.veyro-button-light:hover { background: var(--color-background); color: var(--color-foreground); }
 
 .veyro-section-title,
 .veyro-manifesto-title,
@@ -246,14 +251,22 @@
   line-height: 0.98;
 }
 
-.veyro-section-title { font-size: clamp(2.6rem, 8vw, 4.5rem); }
-.veyro-manifesto-title { font-size: clamp(2.5rem, 7vw, 5.4rem); text-wrap: balance; }
-.veyro-dialog-title { font-size: clamp(2.8rem, 6vw, 4.5rem); }
+.veyro-section-title { font-size: 2.75rem; }
+.veyro-manifesto-title { font-size: 2.7rem; text-wrap: balance; }
+.veyro-dialog-title { font-size: 3rem; }
 .veyro-proof-title { font-family: var(--font-editorial); font-size: 1.7rem; line-height: 1; }
 .veyro-footer-link { transition: opacity 180ms ease; }
 
 .veyro-product-dialog > button[aria-label="Close"] { display: none; }
 .veyro-product-dialog > button[class*="absolute"] { display: none; }
+.veyro-product:focus-visible,
+.veyro-header a:focus-visible,
+.veyro-mobile-menu a:focus-visible,
+.veyro-footer a:focus-visible,
+.veyro-button:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 4px;
+}
 
 .veyro-dialog-action {
   position: sticky;
@@ -263,8 +276,23 @@
 }
 
 @media (min-width: 640px) {
-  .veyro-display { font-size: clamp(5.2rem, 8vw, 8.5rem); }
+  .veyro-display { font-size: 5rem; }
   .veyro-dialog-image { min-height: 100%; }
+}
+
+@media (min-width: 1024px) {
+  .veyro-display { font-size: 4.5rem; }
+  .veyro-section-title { font-size: 4.5rem; }
+  .veyro-manifesto-title { font-size: 5rem; }
+  .veyro-dialog-title { font-size: 4rem; }
+}
+
+@media (min-width: 1280px) {
+  .veyro-display { font-size: 5rem; }
+}
+
+@media (min-width: 1600px) {
+  .veyro-display { font-size: 6rem; }
 }
 
 @media (max-width: 639px) {

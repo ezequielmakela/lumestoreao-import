@@ -66,7 +66,7 @@ export function VeyroStorefront() {
             {menuOpen ? <X /> : <Menu />}
           </Button>
           <a href="#top" className="veyro-wordmark absolute left-1/2 -translate-x-1/2" aria-label="VEYRO — início">VEYRO</a>
-          <a href="#colecao" className="veyro-header-link ml-auto text-[10px] uppercase">Descobrir</a>
+          <a href="#colecao" className="veyro-header-link ml-auto text-[10px] uppercase">Pedir agora</a>
         </div>
         {menuOpen && (
           <nav className="veyro-mobile-menu sm:hidden" aria-label="Menu principal">
@@ -82,16 +82,16 @@ export function VeyroStorefront() {
           <img src={heroImage} alt="Modelo com óculos escuros numa composição editorial VEYRO" width={1600} height={1104} fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover object-[61%_center]" />
           <div className="veyro-hero-shade absolute inset-0" aria-hidden="true" />
           <div className="relative z-10 mx-auto grid w-full max-w-[90rem] grid-cols-4 items-end gap-6 px-5 pb-16 pt-36 sm:px-8 sm:pb-20 lg:grid-cols-12 lg:px-12 lg:pb-24">
-            <div className="col-span-4 max-w-[42rem] lg:col-span-8">
-              <p className="veyro-kicker text-white/70">VEYRO · LUANDA</p>
-              <h1 className="veyro-display mt-5 max-w-3xl text-white">O estilo certo <em>não faz barulho.</em></h1>
+            <div className="col-span-4 max-w-[42rem] lg:col-span-8 lg:max-w-none">
+              <p className="veyro-kicker veyro-hero-copy-soft">VEYRO · LUANDA</p>
+              <h1 className="veyro-display veyro-hero-copy mt-5 max-w-3xl"><span>O estilo certo</span><span>não faz barulho.</span></h1>
               <a href="#colecao" className="veyro-button veyro-button-light mt-8 inline-flex min-h-12 items-center justify-center gap-6 px-6 text-[10px] uppercase sm:mt-10">
                 Explorar coleção <ArrowDown className="h-4 w-4" />
               </a>
             </div>
-            <p className="col-span-4 hidden justify-self-end pb-1 text-right text-[10px] uppercase text-white/65 lg:block">Essenciais para<br />todos os dias</p>
+            <p className="veyro-hero-copy-soft col-span-4 hidden justify-self-end pb-1 text-right text-[10px] uppercase lg:block">Essenciais para<br />todos os dias</p>
           </div>
-          <span className="veyro-hero-index absolute bottom-7 right-5 z-10 text-[9px] text-white/55 sm:right-8 lg:right-12">01 / 03</span>
+          <span className="veyro-hero-copy-soft absolute bottom-7 right-5 z-10 text-[9px] sm:right-8 lg:right-12">01 / 03</span>
         </section>
 
         <section id="colecao" className="veyro-collection scroll-mt-20 px-5 py-20 sm:px-8 sm:py-28 lg:px-12 lg:py-36">
@@ -113,7 +113,7 @@ export function VeyroStorefront() {
                   className={`veyro-product group min-w-0 text-left ${index === 2 ? "col-span-2 lg:col-span-1" : ""}`}
                   aria-label={`Ver ${product.name}`}
                 >
-                  <span className="veyro-product-image relative block aspect-[0.91] overflow-hidden bg-muted sm:aspect-[0.95]">
+                  <span className={`veyro-product-image relative block overflow-hidden bg-muted ${index === 2 ? "mx-auto aspect-square w-[min(100%,22rem)] sm:w-full sm:aspect-[0.95]" : "aspect-[0.91] sm:aspect-[0.95]"}`}>
                     <img src={productImages[product.id]} alt={product.alt} width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]" />
                     <span className="veyro-quick-view absolute bottom-3 right-3 hidden h-10 w-10 items-center justify-center rounded-full bg-background text-foreground sm:flex" aria-hidden="true"><ArrowUpRight className="h-4 w-4" /></span>
                   </span>
@@ -167,8 +167,8 @@ export function VeyroStorefront() {
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] uppercase">
             <a href={contactUrl} target="_blank" rel="noopener noreferrer" className="veyro-footer-link inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a>
-            <span className="text-muted-foreground">Instagram</span>
-            <span className="text-muted-foreground">TikTok</span>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">Instagram</a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">TikTok</a>
             <span className="w-full text-[8px] text-muted-foreground sm:ml-3 sm:w-auto">© VEYRO {new Date().getFullYear()}</span>
           </div>
         </div>
