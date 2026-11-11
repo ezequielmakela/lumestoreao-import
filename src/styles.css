@@ -281,10 +281,18 @@
 }
 
 @media (min-width: 1024px) {
-  .veyro-display { font-size: 6rem; }
+  .veyro-display { font-size: 4.5rem; }
   .veyro-section-title { font-size: 4.5rem; }
   .veyro-manifesto-title { font-size: 5rem; }
   .veyro-dialog-title { font-size: 4rem; }
+}
+
+@media (min-width: 1280px) {
+  .veyro-display { font-size: 5rem; }
+}
+
+@media (min-width: 1600px) {
+  .veyro-display { font-size: 6rem; }
 }
 
 @media (max-width: 639px) {
