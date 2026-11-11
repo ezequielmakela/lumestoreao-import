@@ -66,7 +66,7 @@ export function VeyroStorefront() {
             {menuOpen ? <X /> : <Menu />}
           </Button>
           <a href="#top" className="veyro-wordmark absolute left-1/2 -translate-x-1/2" aria-label="VEYRO — início">VEYRO</a>
-          <a href="#colecao" className="veyro-header-link ml-auto text-[10px] uppercase">Descobrir</a>
+          <a href="#colecao" className="veyro-header-link ml-auto text-[10px] uppercase">Pedir agora</a>
         </div>
         {menuOpen && (
           <nav className="veyro-mobile-menu sm:hidden" aria-label="Menu principal">
@@ -82,7 +82,7 @@ export function VeyroStorefront() {
           <img src={heroImage} alt="Modelo com óculos escuros numa composição editorial VEYRO" width={1600} height={1104} fetchPriority="high" decoding="async" className="absolute inset-0 h-full w-full object-cover object-[61%_center]" />
           <div className="veyro-hero-shade absolute inset-0" aria-hidden="true" />
           <div className="relative z-10 mx-auto grid w-full max-w-[90rem] grid-cols-4 items-end gap-6 px-5 pb-16 pt-36 sm:px-8 sm:pb-20 lg:grid-cols-12 lg:px-12 lg:pb-24">
-            <div className="col-span-4 max-w-[42rem] lg:col-span-8">
+            <div className="col-span-4 max-w-[42rem] lg:col-span-8 lg:max-w-none">
               <p className="veyro-kicker veyro-hero-copy-soft">VEYRO · LUANDA</p>
               <h1 className="veyro-display veyro-hero-copy mt-5 max-w-3xl"><span>O estilo certo</span><span>não faz barulho.</span></h1>
               <a href="#colecao" className="veyro-button veyro-button-light mt-8 inline-flex min-h-12 items-center justify-center gap-6 px-6 text-[10px] uppercase sm:mt-10">
