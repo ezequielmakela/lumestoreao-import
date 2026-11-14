@@ -180,6 +180,24 @@
   letter-spacing: 0.28em;
 }
 
+.veyro-logo-link {
+  display: inline-flex;
+  width: 5.75rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.veyro-logo-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.veyro-header .veyro-logo-link img { filter: brightness(0) invert(1); }
+.veyro-header.is-scrolled .veyro-logo-link img { filter: none; }
+.veyro-logo-footer { width: 7rem; }
+
 .veyro-menu-button { color: currentColor; }
 
 .veyro-mobile-menu {

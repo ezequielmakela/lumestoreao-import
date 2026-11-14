@@ -1,5 +1,5 @@
 // Centralized WhatsApp config. Trocar o número aqui chega para atualizar todo o site.
-export const WHATSAPP_NUMBER = "244952355696"; // formato internacional sem +
+export const WHATSAPP_NUMBER = "244952355696"; // +244 952 355 696, sem o sinal + nos links
 
 export const UNIT_PRICE = 9000;
 
