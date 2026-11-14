@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  buildVeyroContactUrl,
   buildVeyroOrderUrl,
   formatVeyroPrice,
   VEYRO_PRICE,
@@ -49,7 +50,7 @@ export function VeyroStorefront() {
     });
   };
 
-  const contactUrl = "https://wa.me/244952355696?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20VEYRO.";
+  const contactUrl = buildVeyroContactUrl();
 
   return (
     <div id="top" className="min-h-screen bg-background text-foreground">
