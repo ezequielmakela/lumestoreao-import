@@ -173,8 +173,8 @@ export function VeyroStorefront() {
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] uppercase">
             <a href={contactUrl} target="_blank" rel="noopener noreferrer" className="veyro-footer-link inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">Instagram</a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">TikTok</a>
+            <span className="text-muted-foreground">Instagram</span>
+            <span className="text-muted-foreground">TikTok</span>
             <span className="w-full text-[8px] text-muted-foreground sm:ml-3 sm:w-auto">© VEYRO {new Date().getFullYear()}</span>
           </div>
         </div>
