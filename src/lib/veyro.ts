@@ -40,3 +40,6 @@ export const buildVeyroOrderUrl = (product: VeyroProduct) => {
   const message = `Olá, quero garantir o ${product.name} da VEYRO. Pagamento na entrega.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 };
+
+export const buildVeyroContactUrl = () =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá, gostaria de saber mais sobre a VEYRO.")}`;

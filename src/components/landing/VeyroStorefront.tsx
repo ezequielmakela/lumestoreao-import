@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import {
+  buildVeyroContactUrl,
   buildVeyroOrderUrl,
   formatVeyroPrice,
   VEYRO_PRICE,
@@ -19,6 +20,7 @@ import heroImage from "@/assets/veyro-hero.webp";
 import glassesImage from "@/assets/veyro-glasses.webp";
 import watchImage from "@/assets/veyro-watch.webp";
 import braceletImage from "@/assets/veyro-bracelet.webp";
+import logoAsset from "@/assets/veyro-logo.png.asset.json";
 
 const productImages: Record<string, string> = {
   "oculos-transparente": glassesImage,
@@ -48,7 +50,7 @@ export function VeyroStorefront() {
     });
   };
 
-  const contactUrl = "https://wa.me/244952355696?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20VEYRO.";
+  const contactUrl = buildVeyroContactUrl();
 
   return (
     <div id="top" className="min-h-screen bg-background text-foreground">
@@ -65,7 +67,9 @@ export function VeyroStorefront() {
           >
             {menuOpen ? <X /> : <Menu />}
           </Button>
-          <a href="#top" className="veyro-wordmark absolute left-1/2 -translate-x-1/2" aria-label="VEYRO — início">VEYRO</a>
+          <a href="#top" className="veyro-logo-link absolute left-1/2 -translate-x-1/2" aria-label="VEYRO — início">
+            <img src={logoAsset.url} alt="VEYRO" width={150} height={50} />
+          </a>
           <a href="#colecao" className="veyro-header-link ml-auto text-[10px] uppercase">Pedir agora</a>
         </div>
         {menuOpen && (
@@ -162,13 +166,15 @@ export function VeyroStorefront() {
       <footer id="contacto" className="veyro-footer px-5 pb-8 pt-5 sm:px-8 lg:px-12">
         <div className="mx-auto flex max-w-[90rem] flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <a href="#top" className="veyro-wordmark text-xl" aria-label="VEYRO — voltar ao início">VEYRO</a>
+            <a href="#top" className="veyro-logo-link veyro-logo-footer" aria-label="VEYRO — voltar ao início">
+              <img src={logoAsset.url} alt="VEYRO" width={150} height={50} />
+            </a>
             <p className="mt-3 text-[9px] uppercase text-muted-foreground">Luanda, Angola</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-[9px] uppercase">
             <a href={contactUrl} target="_blank" rel="noopener noreferrer" className="veyro-footer-link inline-flex items-center gap-2"><MessageCircle className="h-3.5 w-3.5" /> WhatsApp</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">Instagram</a>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" className="veyro-footer-link">TikTok</a>
+            <span className="text-muted-foreground">Instagram</span>
+            <span className="text-muted-foreground">TikTok</span>
             <span className="w-full text-[8px] text-muted-foreground sm:ml-3 sm:w-auto">© VEYRO {new Date().getFullYear()}</span>
           </div>
         </div>

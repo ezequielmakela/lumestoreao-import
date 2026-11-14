@@ -6,3 +6,4 @@
 - [x] Validar telefone, desktop, compra e ausência de erros
 - [x] Implementar e validar a experiência premium aprovada
 - [x] Substituir a loja Lume pela experiência VEYRO aprovada, com catálogo, fichas de produto e pedidos por WhatsApp
+- [x] Aplicar a logo enviada, atualizar o favicon e confirmar o WhatsApp +244 952 355 696

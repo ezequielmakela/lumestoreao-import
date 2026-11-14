@@ -1,5 +1,6 @@
 import { expect, test } from "bun:test";
 import {
+  buildVeyroContactUrl,
   buildVeyroOrderUrl,
   formatVeyroPrice,
   VEYRO_PRICE,
@@ -27,4 +28,10 @@ test("product order links include the selected name and payment on delivery", ()
   expect(order.searchParams.get("text")).toBe(
     "Olá, quero garantir o Óculos Transparente da VEYRO. Pagamento na entrega.",
   );
+});
+
+test("general VEYRO contact uses the confirmed WhatsApp number", () => {
+  const contact = new URL(buildVeyroContactUrl());
+  expect(contact.pathname).toBe("/244952355696");
+  expect(contact.searchParams.get("text")).toBe("Olá, gostaria de saber mais sobre a VEYRO.");
 });
