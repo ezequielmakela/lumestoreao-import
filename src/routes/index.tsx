@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { VeyroStorefront } from "@/components/landing/VeyroStorefront";
-import { VEYRO_PRICE, VEYRO_PRODUCTS } from "@/lib/veyro";
+import { VEYRO_PRODUCTS } from "@/lib/veyro";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -36,7 +36,7 @@ function LandingPage() {
       content_category: "Acessórios",
       content_ids: VEYRO_PRODUCTS.map((product) => `veyro-${product.id}`),
       content_type: "product_group",
-      value: VEYRO_PRICE,
+      value: VEYRO_PRODUCTS[0]?.price ?? 0,
       currency: "AOA",
     });
   }, []);
