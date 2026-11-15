@@ -2,34 +2,27 @@ import { useEffect, useState } from "react";
 import { ArrowDown, ArrowUpRight, Menu, MessageCircle, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
   buildVeyroContactUrl,
+  buildVeyroKitOrderUrl,
   buildVeyroOrderUrl,
   formatVeyroPrice,
-  VEYRO_PRICE,
+  VEYRO_KIT,
   VEYRO_PRODUCTS,
-  VEYRO_REFERENCE_PRICE,
   type VeyroProduct,
 } from "@/lib/veyro";
 import heroImage from "@/assets/veyro-hero.webp";
-import glassesImage from "@/assets/veyro-glasses.webp";
-import watchImage from "@/assets/veyro-watch.webp";
 import braceletImage from "@/assets/veyro-bracelet.webp";
 import logoAsset from "@/assets/veyro-logo.png.asset.json";
+import watchImage from "@/assets/veyro-classic-square-watch.jpg.asset.json";
+import glassesImage from "@/assets/veyro-crystal-vision-glasses.jpg.asset.json";
 
 const productImages: Record<string, string> = {
-  "oculos-transparente": glassesImage,
-  "relogio-quadrado": watchImage,
-  pulseira: braceletImage,
+  "classic-square": watchImage.url,
+  "crystal-vision": glassesImage.url,
+  "signature-cord": braceletImage,
 };
 
 export function VeyroStorefront() {
-  const [selectedProduct, setSelectedProduct] = useState<VeyroProduct | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -45,7 +38,7 @@ export function VeyroStorefront() {
     fbq?.("track", "Contact", {
       content_name: product.name,
       content_ids: [`veyro-${product.id}`],
-      value: VEYRO_PRICE,
+      value: product.price,
       currency: "AOA",
     });
   };
@@ -102,40 +95,55 @@ export function VeyroStorefront() {
           <div className="mx-auto max-w-[90rem]">
             <div className="veyro-collection-heading mb-10 flex items-end justify-between gap-5 sm:mb-14">
               <div>
-                <p className="veyro-kicker text-muted-foreground">A seleção VEYRO</p>
-                <h2 className="veyro-section-title mt-3">Menos, mas melhor.</h2>
+                <p className="veyro-kicker text-muted-foreground">The Edit · VEYRO</p>
+                <h2 className="veyro-section-title mt-3">A Coleção</h2>
               </div>
               <span className="hidden pb-1 text-[10px] uppercase text-muted-foreground sm:block">01 — 03</span>
             </div>
 
-            <div className="grid grid-cols-2 gap-x-3 gap-y-9 sm:gap-x-5 lg:grid-cols-3 lg:gap-x-7">
-              {VEYRO_PRODUCTS.map((product, index) => (
-                <button
-                  key={product.id}
-                  type="button"
-                  onClick={() => setSelectedProduct(product)}
-                  className={`veyro-product group min-w-0 text-left ${index === 2 ? "col-span-2 lg:col-span-1" : ""}`}
-                  aria-label={`Ver ${product.name}`}
-                >
-                  <span className={`veyro-product-image relative block overflow-hidden bg-muted ${index === 2 ? "mx-auto aspect-square w-[min(100%,22rem)] sm:w-full sm:aspect-[0.95]" : "aspect-[0.91] sm:aspect-[0.95]"}`}>
-                    <img src={productImages[product.id]} alt={product.alt} width={1024} height={1024} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.035]" />
-                    <span className="veyro-quick-view absolute bottom-3 right-3 hidden h-10 w-10 items-center justify-center rounded-full bg-background text-foreground sm:flex" aria-hidden="true"><ArrowUpRight className="h-4 w-4" /></span>
-                  </span>
-                  <span className="mt-4 flex items-baseline justify-between gap-2 sm:mt-5">
-                    <span className="min-w-0">
-                      <span className="block text-[9px] uppercase text-muted-foreground">{product.category}</span>
-                      <span className="mt-1 block truncate text-[12px] font-light sm:text-sm">{product.name}</span>
-                    </span>
-                    <span className="shrink-0 text-right">
-                      <span className="block text-[9px] text-muted-foreground line-through">{formatVeyroPrice(VEYRO_REFERENCE_PRICE)}</span>
-                      <span className="mt-1 block text-[11px] font-medium sm:text-xs">{formatVeyroPrice(VEYRO_PRICE)}</span>
-                    </span>
-                  </span>
-                  <span className="mt-3 block h-px w-full origin-left scale-x-0 bg-foreground transition-transform duration-500 group-hover:scale-x-100" aria-hidden="true" />
-                </button>
+            <div className="grid grid-cols-1 gap-x-7 gap-y-12 lg:grid-cols-3 lg:gap-x-8">
+              {VEYRO_PRODUCTS.map((product) => (
+                <article key={product.id} className="veyro-product group min-w-0">
+                  <div className="veyro-product-image relative aspect-[4/5] overflow-hidden bg-muted">
+                    <img src={productImages[product.id]} alt={product.alt} width={1024} height={1280} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]" />
+                  </div>
+                  <div className="mt-5 flex min-w-0 items-baseline justify-between gap-3">
+                    <div className="min-w-0">
+                      <p className="veyro-kicker text-muted-foreground">{product.category}</p>
+                      <h3 className="veyro-product-title mt-2">{product.name}</h3>
+                    </div>
+                    <div className="shrink-0 text-right">
+                      <s className="block text-[10px] text-muted-foreground">{formatVeyroPrice(product.referencePrice)}</s>
+                      <span className="mt-1 block text-sm font-medium">{formatVeyroPrice(product.price)}</span>
+                    </div>
+                  </div>
+                  <p className="mt-4 max-w-prose text-xs font-light leading-6 text-muted-foreground sm:text-sm">{product.description}</p>
+                  <Button asChild className="veyro-order-button mt-6 min-h-12 w-full rounded-none bg-foreground px-5 text-[10px] font-normal uppercase text-background hover:bg-foreground/90">
+                    <a href={buildVeyroOrderUrl(product)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(product)}>
+                      Encomendar via WhatsApp <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </Button>
+                </article>
               ))}
             </div>
             <p className="mt-6 text-[9px] font-light text-muted-foreground">Imagens ilustrativas.</p>
+
+            <section className="veyro-kit-offer mt-16 grid gap-8 px-6 py-9 sm:mt-24 sm:grid-cols-12 sm:items-end sm:px-10 sm:py-12 lg:px-14 lg:py-14" aria-labelledby="veyro-kit-title">
+              <div className="sm:col-span-8">
+                <p className="veyro-kicker text-background/60">Clube VEYRO · Founders Edition</p>
+                <h3 id="veyro-kit-title" className="veyro-kit-title mt-4">{VEYRO_KIT.name}</h3>
+                <p className="mt-5 max-w-2xl text-sm font-light leading-7 text-background/75">{VEYRO_KIT.description}</p>
+              </div>
+              <div className="sm:col-span-4 sm:justify-self-end sm:text-right">
+                <s className="block text-xs text-background/55">{formatVeyroPrice(VEYRO_KIT.referencePrice)}</s>
+                <p className="mt-2 text-2xl font-light">{formatVeyroPrice(VEYRO_KIT.price)}</p>
+                <Button asChild className="mt-6 min-h-12 w-full rounded-none border border-background/60 bg-background px-5 text-[10px] font-normal uppercase text-foreground hover:bg-background/85 sm:min-w-64">
+                  <a href={buildVeyroKitOrderUrl()} target="_blank" rel="noopener noreferrer">
+                    Garantir o Meu Kit via WhatsApp <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            </section>
           </div>
         </section>
 
@@ -180,46 +188,6 @@ export function VeyroStorefront() {
         </div>
       </footer>
 
-      <Dialog open={selectedProduct !== null} onOpenChange={(open) => !open && setSelectedProduct(null)}>
-        {selectedProduct && (
-          <DialogContent className="veyro-product-dialog grid h-[100dvh] w-screen max-w-none translate-x-[-50%] translate-y-[-50%] grid-cols-1 gap-0 overflow-hidden rounded-none border-0 bg-background p-0 sm:h-[88dvh] sm:w-[92vw] sm:max-w-6xl sm:grid-cols-2">
-            <div className="veyro-dialog-image relative min-h-0 bg-muted">
-              <img src={productImages[selectedProduct.id]} alt={selectedProduct.alt} width={1024} height={1024} className="h-full w-full object-cover" />
-              <span className="absolute bottom-5 left-5 text-[9px] uppercase text-foreground/60">VEYRO · {selectedProduct.category}</span>
-            </div>
-            <div className="veyro-dialog-details flex min-h-0 flex-col overflow-y-auto px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] pt-7 sm:px-9 sm:pb-9 sm:pt-12 lg:px-14">
-              <div className="flex items-center justify-between">
-                <p className="veyro-kicker text-muted-foreground">A seleção VEYRO</p>
-                <Button variant="ghost" size="icon" className="-mr-3 -mt-2" onClick={() => setSelectedProduct(null)} aria-label="Fechar ficha do produto"><X /></Button>
-              </div>
-              <DialogTitle className="veyro-dialog-title mt-5">{selectedProduct.name}</DialogTitle>
-              <DialogDescription className="sr-only">Ficha de {selectedProduct.name} VEYRO, com pagamento na entrega.</DialogDescription>
-              <div className="mt-5 flex items-baseline gap-3">
-                <span className="text-sm">{formatVeyroPrice(VEYRO_PRICE)}</span>
-                <span className="text-xs text-muted-foreground line-through">{formatVeyroPrice(VEYRO_REFERENCE_PRICE)}</span>
-              </div>
-              {selectedProduct.option && (
-                <fieldset className="mt-8 border-t border-border pt-6">
-                  <legend className="text-[9px] uppercase text-muted-foreground">{selectedProduct.option.label}</legend>
-                  <span className="mt-3 inline-flex min-h-10 items-center border border-foreground px-4 text-[10px]">{selectedProduct.option.value}</span>
-                </fieldset>
-              )}
-              <div className="mt-8 border-t border-border pt-5 text-xs font-light text-muted-foreground">
-                <p>Pagamento na entrega</p>
-                <p className="mt-2">Confirma o teu pedido diretamente connosco.</p>
-              </div>
-              <div className="veyro-dialog-action mt-auto pt-8">
-                <Button asChild className="veyro-whatsapp-cta min-h-12 w-full rounded-full bg-foreground text-[10px] font-normal uppercase text-background hover:bg-foreground/90">
-                  <a href={buildVeyroOrderUrl(selectedProduct)} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsAppClick(selectedProduct)}>
-                    Comprar via WhatsApp <ArrowUpRight className="h-4 w-4" />
-                  </a>
-                </Button>
-                <p className="mt-3 text-center text-[9px] font-light text-muted-foreground">Sem pagamento antecipado.</p>
-              </div>
-            </div>
-          </DialogContent>
-        )}
-      </Dialog>
     </div>
   );
 }
