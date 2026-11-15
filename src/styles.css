@@ -273,6 +273,25 @@
 .veyro-manifesto-title { font-size: 2.7rem; text-wrap: balance; }
 .veyro-dialog-title { font-size: 3rem; }
 .veyro-proof-title { font-family: var(--font-editorial); font-size: 1.7rem; line-height: 1; }
+.veyro-product-title {
+  font-family: var(--font-editorial);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.05;
+}
+.veyro-kit-offer {
+  background-color: var(--color-foreground);
+  color: var(--color-background);
+}
+.veyro-kit-title {
+  font-family: var(--font-editorial);
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 0.98;
+  text-wrap: balance;
+}
 .veyro-footer-link { transition: opacity 180ms ease; }
 
 .veyro-product-dialog > button[aria-label="Close"] { display: none; }
@@ -303,6 +322,7 @@
   .veyro-section-title { font-size: 4.5rem; }
   .veyro-manifesto-title { font-size: 5rem; }
   .veyro-dialog-title { font-size: 4rem; }
+  .veyro-kit-title { font-size: 3.5rem; }
 }
 
 @media (min-width: 1280px) {
